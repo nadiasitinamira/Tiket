@@ -131,7 +131,7 @@ public class Login extends javax.swing.JFrame {
         String password="12345";
         if(username.equalsIgnoreCase(txt_id.getText()) && password.equalsIgnoreCase(txt_pass.getText())){
             this.setVisible(false);
-            new PemesananTiketKeretaApi().setVisible(true);
+            new MenuPilihanTiket().setVisible(true);
         }
         else{
             javax.swing.JOptionPane.showMessageDialog(null, "MAAF MASUKAN USER DAN PASSWORD ANDA SALAH!!");

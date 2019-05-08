@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -57,28 +60,28 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         jLabel2.setText("Kode Pesawat");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
         jLabel3.setText("Nama Pesawat");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         jLabel4.setText("Kelas Pesawat");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
         jLabel5.setText("Harga Tiket");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
 
         jLabel6.setText("Jumlah Tiket");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         jLabel7.setText("Total Bayar");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
 
         jLabel8.setText("Uang Bayar");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
         jLabel9.setText("Uang Kembali");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, -1, -1));
 
         kode_pesawat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "MPT", "GRD", "BTV" }));
         kode_pesawat.addActionListener(new java.awt.event.ActionListener() {
@@ -86,8 +89,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 kode_pesawatActionPerformed(evt);
             }
         });
-        jPanel1.add(kode_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 210, -1));
-        jPanel1.add(nama_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 210, -1));
+        jPanel1.add(kode_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 210, -1));
+        jPanel1.add(nama_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 210, -1));
 
         kelas_pesawat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "Kelas 1", "Kelas 2", "Kelas 3" }));
         kelas_pesawat.addActionListener(new java.awt.event.ActionListener() {
@@ -95,8 +98,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 kelas_pesawatActionPerformed(evt);
             }
         });
-        jPanel1.add(kelas_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 210, -1));
-        jPanel1.add(harga_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 210, -1));
+        jPanel1.add(kelas_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 210, -1));
+        jPanel1.add(harga_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 210, -1));
 
         jumlah_tiket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,9 +111,9 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 jumlah_tiketKeyPressed(evt);
             }
         });
-        jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 210, -1));
-        jPanel1.add(total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 210, -1));
-        jPanel1.add(uang_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 210, -1));
+        jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 210, -1));
+        jPanel1.add(total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 210, -1));
+        jPanel1.add(uang_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 210, -1));
 
         hitung.setText("Hitung");
         hitung.addActionListener(new java.awt.event.ActionListener() {
@@ -118,8 +121,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 hitungActionPerformed(evt);
             }
         });
-        jPanel1.add(hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
-        jPanel1.add(uang_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 210, -1));
+        jPanel1.add(hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        jPanel1.add(uang_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, 210, -1));
 
         input.setText("Input");
         input.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +130,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 inputActionPerformed(evt);
             }
         });
-        jPanel1.add(input, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, -1, -1));
+        jPanel1.add(input, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, -1, -1));
 
         keluar.setText("Keluar");
         keluar.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +138,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 keluarActionPerformed(evt);
             }
         });
-        jPanel1.add(keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, -1, -1));
+        jPanel1.add(keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,7 +148,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
 
         pack();
@@ -225,7 +228,12 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        int answer=JOptionPane.showConfirmDialog(null,"Anda yakin keluar?","Keluar", JOptionPane.OK_OPTION);
+        
+        MenuPilihanTiket Menu;
+        Menu = new MenuPilihanTiket();
+        Menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_keluarActionPerformed
 
     /**

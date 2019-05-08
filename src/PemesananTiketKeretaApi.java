@@ -77,7 +77,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
         jLabel4.setText("Harga");
 
-        jurusan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih", "Bandar Kalipah", "Binjai", "Kisaran", "Rantau Parapat", "Siantar", "Tebing Tinggi" }));
+        jurusan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "Bandar Kalipah", "Binjai", "Kisaran", "Rantau Parapat", "Siantar", "Tebing Tinggi" }));
         jurusan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jurusanActionPerformed(evt);
@@ -348,9 +348,11 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
         // TODO add your handling code here:
         int answer=JOptionPane.showConfirmDialog(null,"Anda yakin keluar?","Keluar", JOptionPane.OK_OPTION);
-        if(answer==JOptionPane.OK_OPTION){
-            dispose();
-        }
+        
+        MenuPilihanTiket Menu;
+        Menu = new MenuPilihanTiket();
+        Menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_batalActionPerformed
 
     private void btn_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakActionPerformed
