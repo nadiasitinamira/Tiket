@@ -26,8 +26,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -35,155 +35,198 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        kode_pesawat = new javax.swing.JComboBox<>();
+        nama_pesawat = new javax.swing.JTextField();
+        kelas_pesawat = new javax.swing.JComboBox<>();
+        harga_tiket = new javax.swing.JTextField();
+        jumlah_tiket = new javax.swing.JTextField();
+        total_bayar = new javax.swing.JTextField();
+        uang_bayar = new javax.swing.JTextField();
+        hitung = new javax.swing.JButton();
+        uang_kembali = new javax.swing.JTextField();
+        input = new javax.swing.JButton();
+        keluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Penjualan Tiket Pesawat");
+        jLabel1.setText("Pemesanan Tiket Pesawat");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Form Pemesanan Tiket Penerbangan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jLabel2.setText("Kode Pesawat");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
-        jLabel2.setText("Nama");
+        jLabel3.setText("Nama Pesawat");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
-        jLabel3.setText("Kode Maskapai");
+        jLabel4.setText("Kelas Pesawat");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
 
-        jLabel4.setText("Nama Maskapai");
+        jLabel5.setText("Harga Tiket");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
 
-        jLabel5.setText("Tujuan");
+        jLabel6.setText("Jumlah Tiket");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
-        jLabel6.setText("Jenis Tiket");
+        jLabel7.setText("Total Bayar");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
-        jLabel7.setText("Harga");
+        jLabel8.setText("Uang Bayar");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
 
-        jLabel8.setText("Jumlah Tiket");
+        jLabel9.setText("Uang Kembali");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Kode" }));
+        kode_pesawat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "MPT", "GRD", "BTV" }));
+        kode_pesawat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kode_pesawatActionPerformed(evt);
+            }
+        });
+        jPanel1.add(kode_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 210, -1));
+        jPanel1.add(nama_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 210, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tujuan" }));
+        kelas_pesawat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "Kelas 1", "Kelas 2", "Kelas 3" }));
+        kelas_pesawat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kelas_pesawatActionPerformed(evt);
+            }
+        });
+        jPanel1.add(kelas_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 210, -1));
+        jPanel1.add(harga_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 210, -1));
 
-        jRadioButton1.setText("Anak-anak");
+        jumlah_tiket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlah_tiketActionPerformed(evt);
+            }
+        });
+        jumlah_tiket.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jumlah_tiketKeyPressed(evt);
+            }
+        });
+        jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 210, -1));
+        jPanel1.add(total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 210, -1));
+        jPanel1.add(uang_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 210, -1));
 
-        jRadioButton2.setText("Dewasa");
+        hitung.setText("Hitung");
+        hitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hitungActionPerformed(evt);
+            }
+        });
+        jPanel1.add(hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
+        jPanel1.add(uang_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 210, -1));
 
-        jButton1.setText("Pesan Lagi");
+        input.setText("Input");
+        input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputActionPerformed(evt);
+            }
+        });
+        jPanel1.add(input, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, -1, -1));
 
-        jButton2.setText("Keluar");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField4)
-                        .addComponent(jComboBox1, 0, 129, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)))
-                .addContainerGap(261, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(32, 32, 32)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 133, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap())
-        );
+        keluar.setText("Keluar");
+        keluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void kode_pesawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pesawatActionPerformed
+        // TODO add your handling code here:
+        if (kode_pesawat.getSelectedItem().equals("MPT")){
+            nama_pesawat.setText("Merpati");
+        }else if(kode_pesawat.getSelectedItem().equals("GRD")){
+            nama_pesawat.setText("Garuda");
+        }else if(kode_pesawat.getSelectedItem().equals("BTV")){
+            nama_pesawat.setText("Batavia");
+        }
+    }//GEN-LAST:event_kode_pesawatActionPerformed
+
+    private void kelas_pesawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelas_pesawatActionPerformed
+        // TODO add your handling code here:
+        if(kode_pesawat.getSelectedItem().equals("MPT")){
+        if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
+            harga_tiket.setText("1500000");
+        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
+            harga_tiket.setText("900000");
+        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
+            harga_tiket.setText("500000");
+        }
+        }else if(kode_pesawat.getSelectedItem().equals("GRD")){
+        if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
+            harga_tiket.setText("1200000");
+        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
+            harga_tiket.setText("800000");
+        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
+            harga_tiket.setText("400000");
+        }
+        }else if(kode_pesawat.getSelectedItem().equals("BTV")){
+        if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
+            harga_tiket.setText("1000000");
+        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
+            harga_tiket.setText("700000");
+        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
+            harga_tiket.setText("300000");
+        }
+      }
+    }//GEN-LAST:event_kelas_pesawatActionPerformed
+
+    private void jumlah_tiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_tiketActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jumlah_tiketActionPerformed
+
+    private void jumlah_tiketKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jumlah_tiketKeyPressed
+        // TODO add your handling code here:
+        int harga=Integer.parseInt(harga_tiket.getText());
+        int jumlah=Integer.parseInt(jumlah_tiket.getText());
+        int hasil=harga*jumlah;
+        total_bayar.setText(Integer.toString(hasil));
+    }//GEN-LAST:event_jumlah_tiketKeyPressed
+
+    private void hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungActionPerformed
+        // TODO add your handling code here:
+        int total=Integer.parseInt(total_bayar.getText());
+        int uang=Integer.parseInt(uang_bayar.getText());
+        int hasil=uang-total;
+        uang_kembali.setText(Integer.toString(hasil));
+    }//GEN-LAST:event_hitungActionPerformed
+
+    private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
+        // TODO add your handling code here:
+        nama_pesawat.setText("");
+        harga_tiket.setText("");
+        jumlah_tiket.setText("");
+        total_bayar.setText("");
+        uang_bayar.setText("");
+        uang_kembali.setText("");
+        kelas_pesawat.setSelectedIndex(0);
+        kode_pesawat.setSelectedIndex(0);
+    }//GEN-LAST:event_inputActionPerformed
+
+    private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_keluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,10 +264,9 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JTextField harga_tiket;
+    private javax.swing.JButton hitung;
+    private javax.swing.JButton input;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -233,12 +275,15 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jumlah_tiket;
+    private javax.swing.JComboBox<String> kelas_pesawat;
+    private javax.swing.JButton keluar;
+    private javax.swing.JComboBox<String> kode_pesawat;
+    private javax.swing.JTextField nama_pesawat;
+    private javax.swing.JTextField total_bayar;
+    private javax.swing.JTextField uang_bayar;
+    private javax.swing.JTextField uang_kembali;
     // End of variables declaration//GEN-END:variables
 }
