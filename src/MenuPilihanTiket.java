@@ -37,7 +37,7 @@ public class MenuPilihanTiket extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnKA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo1.png"))); // NOI18N
+        btnKA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/logo1.png"))); // NOI18N
         btnKA.setText("Pemesanan Tiket Kereta Api");
         btnKA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,7 +45,7 @@ public class MenuPilihanTiket extends javax.swing.JFrame {
             }
         });
 
-        btnKPL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo2.png"))); // NOI18N
+        btnKPL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/logo2.png"))); // NOI18N
         btnKPL.setText("Pemesanan Tiket Kapal");
         btnKPL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,7 +53,7 @@ public class MenuPilihanTiket extends javax.swing.JFrame {
             }
         });
 
-        btnPSWT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo3.png"))); // NOI18N
+        btnPSWT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/logo3.png"))); // NOI18N
         btnPSWT.setText("Pemesanan Tiket Pesawat");
         btnPSWT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

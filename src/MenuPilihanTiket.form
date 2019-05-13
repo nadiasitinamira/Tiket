@@ -80,7 +80,7 @@
         <Component class="javax.swing.JButton" name="btnKA">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/logo1.png"/>
+              <Image iconType="3" name="/gambar/logo1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pemesanan Tiket Kereta Api"/>
           </Properties>
@@ -91,7 +91,7 @@
         <Component class="javax.swing.JButton" name="btnKPL">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/logo2.png"/>
+              <Image iconType="3" name="/gambar/logo2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pemesanan Tiket Kapal"/>
           </Properties>
@@ -102,7 +102,7 @@
         <Component class="javax.swing.JButton" name="btnPSWT">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/logo3.png"/>
+              <Image iconType="3" name="/gambar/logo3.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pemesanan Tiket Pesawat"/>
           </Properties>
