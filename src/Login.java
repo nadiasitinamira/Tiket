@@ -1,3 +1,11 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -44,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Silahkan Masuk", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jLabel2.setText("Nama Pengguna");
+        jLabel2.setText("Admin");
 
         jLabel3.setText("Kata Sandi");
 
@@ -127,17 +135,51 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-        String username="nadnad";
-        String password="12345";
-        if(username.equalsIgnoreCase(txt_id.getText()) && password.equalsIgnoreCase(txt_pass.getText())){
-            this.setVisible(false);
-            new MenuPilihanTiket().setVisible(true);
+        String kataSandi = new String(txt_pass.getPassword());
+        Statement stmt = null;
+        ResultSet rs = null;
+        Connection conn = null;
+        
+        try{
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/tiket?" + "user=root&password=");
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT COUNT(*) FROM user WHERE username='"+txt_id.getText()+"' and password='"+kataSandi+"'");
+            //ngambil nilanya
+            rs.next();
+            int ada = rs.getInt(1);
+            if(ada==0){
+                JOptionPane.showMessageDialog(this, "Username atau password salah!","Error Login!", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Berhasil Login", "Login", JOptionPane.INFORMATION_MESSAGE);
+                new MenuPilihanTiket().setVisible(true);
+                this.dispose();
+            }
+            
+            //gunakan variabel rs
         }
-        else{
-            javax.swing.JOptionPane.showMessageDialog(null, "MAAF MASUKAN USER DAN PASSWORD ANDA SALAH!!");
-            txt_id.setText("");
-            txt_pass.setText("");
-            txt_id.requestFocus();
+        catch (SQLException ex){
+            //mengatasi error
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        finally{
+            if(rs != null){
+                try{
+                    rs.close();
+                }
+                catch(SQLException sqlEx){} //ignore
+                
+                rs = null;
+            }
+            if(stmt != null){
+                try{
+                    stmt.close();
+                }
+                catch(SQLException sqlEx){} //ignore
+                stmt = null;
+            }
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
