@@ -91,7 +91,7 @@ public class Read extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Adobe Arabic", 1, 18)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Pemesanan Tiket Pesawat");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -111,7 +111,7 @@ public class Read extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(561, 561, 561)
                 .addComponent(jLabel1)
-                .addContainerGap(614, Short.MAX_VALUE))
+                .addContainerGap(540, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -124,7 +124,7 @@ public class Read extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(112, 112, 112)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(462, Short.MAX_VALUE))
+                .addContainerGap(455, Short.MAX_VALUE))
         );
 
         pack();
