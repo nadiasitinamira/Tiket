@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2019 at 12:04 PM
+-- Generation Time: May 26, 2019 at 02:30 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -25,22 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Table structure for table `tiket`
 --
 
-CREATE TABLE `login` (
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `usertype` varchar(50) NOT NULL
+CREATE TABLE `tiket` (
+  `kode_pesawat` varchar(10) NOT NULL,
+  `nama_pesawat` varchar(20) NOT NULL,
+  `kelas_pesawat` varchar(10) NOT NULL,
+  `harga_tiket` int(100) NOT NULL,
+  `jumlah_tiket` int(100) NOT NULL,
+  `total_bayar` int(100) NOT NULL,
+  `uang_bayar` int(100) NOT NULL,
+  `uang_kembali` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `login`
+-- Dumping data for table `tiket`
 --
 
-INSERT INTO `login` (`username`, `password`, `usertype`) VALUES
-('ayak', '123', 'user'),
-('namira', '456', 'admin');
+INSERT INTO `tiket` (`kode_pesawat`, `nama_pesawat`, `kelas_pesawat`, `harga_tiket`, `jumlah_tiket`, `total_bayar`, `uang_bayar`, `uang_kembali`) VALUES
+('MPT', 'Merpati', 'Kelas 1', 1500000, 1, 1500000, 2000000, 500000);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
