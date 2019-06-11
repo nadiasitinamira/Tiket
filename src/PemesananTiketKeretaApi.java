@@ -49,9 +49,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         btn_input = new javax.swing.JButton();
         btn_batal = new javax.swing.JButton();
-        btn_cetak = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txt_area = new javax.swing.JTextArea();
         txt_kursi = new javax.swing.JTextField();
         txt_penumpang = new javax.swing.JTextField();
         txt_beli = new javax.swing.JTextField();
@@ -102,6 +99,12 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         rb_ekonomi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rb_ekonomiActionPerformed(evt);
+            }
+        });
+
+        txt_harga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_hargaActionPerformed(evt);
             }
         });
 
@@ -169,7 +172,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jLabel10.setText("Uang Kembali");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
 
-        btn_input.setText("Input Lagi");
+        btn_input.setText("Input");
         btn_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_inputActionPerformed(evt);
@@ -185,19 +188,11 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         });
         jPanel1.add(btn_batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, -1, -1));
 
-        btn_cetak.setText("Cetak");
-        btn_cetak.addActionListener(new java.awt.event.ActionListener() {
+        txt_kursi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cetakActionPerformed(evt);
+                txt_kursiActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
-
-        txt_area.setColumns(20);
-        txt_area.setRows(5);
-        jScrollPane1.setViewportView(txt_area);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 470, 160));
         jPanel1.add(txt_kursi, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 140, -1));
         jPanel1.add(txt_penumpang, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 140, -1));
 
@@ -212,6 +207,12 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txt_beli, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 140, -1));
+
+        txt_total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_totalActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 140, -1));
 
         txt_bayar.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +226,12 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txt_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 140, -1));
+
+        txt_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_kembaliActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 140, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,7 +242,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -355,24 +362,28 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_batalActionPerformed
 
-    private void btn_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakActionPerformed
-        // TODO add your handling code here:
-        btn_cetak.setText((String)jurusan.getSelectedItem());
-        txt_area.setText(
-                "Nomor Kursi                : "+txt_kursi.getText()+"\n"+
-                "Nama Penumpang     : "+txt_penumpang.getText()+"\n"+
-                "Jumlah Beli                  : "+txt_beli.getText()+"\n"+
-                "Total Bayar                    : "+txt_total.getText()+"\n"+
-                "Uang Bayar                   : "+txt_bayar.getText()+"\n"+
-                "Uang Kembali              : "+txt_kembali.getText()+"\n");
-    }//GEN-LAST:event_btn_cetakActionPerformed
-
     private void rb_ekonomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_ekonomiActionPerformed
         // TODO add your handling code here:
         if(rb_ekonomi.isSelected()){
             txt_harga.setText(String.valueOf(ekonomi));
         }
     }//GEN-LAST:event_rb_ekonomiActionPerformed
+
+    private void txt_hargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_hargaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_hargaActionPerformed
+
+    private void txt_kursiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kursiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kursiActionPerformed
+
+    private void txt_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kembaliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kembaliActionPerformed
+
+    private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_totalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,7 +422,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_batal;
-    private javax.swing.JButton btn_cetak;
     private javax.swing.JButton btn_input;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
@@ -426,12 +436,10 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jurusan;
     private javax.swing.JRadioButton rb_bisnis;
     private javax.swing.JRadioButton rb_ekonomi;
     private javax.swing.JRadioButton rb_eksekutif;
-    private javax.swing.JTextArea txt_area;
     private javax.swing.JTextField txt_bayar;
     private javax.swing.JTextField txt_beli;
     private javax.swing.JTextField txt_harga;
