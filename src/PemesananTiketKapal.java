@@ -37,7 +37,7 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         rb_Eksekutif = new javax.swing.JRadioButton();
-        radiob_Bisnis = new javax.swing.JRadioButton();
+        rb_bisnis = new javax.swing.JRadioButton();
         rb_Ekonomi = new javax.swing.JRadioButton();
         harga_txt = new javax.swing.JTextField();
         tujuan = new javax.swing.JComboBox<>();
@@ -78,10 +78,10 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
             }
         });
 
-        radiob_Bisnis.setText("Bisnis");
-        radiob_Bisnis.addActionListener(new java.awt.event.ActionListener() {
+        rb_bisnis.setText("Bisnis");
+        rb_bisnis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radiob_BisnisActionPerformed(evt);
+                rb_bisnisActionPerformed(evt);
             }
         });
 
@@ -113,7 +113,7 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(radiob_Bisnis)
+                            .addComponent(rb_bisnis)
                             .addComponent(rb_Eksekutif)
                             .addComponent(rb_Ekonomi)
                             .addComponent(harga_txt)
@@ -132,7 +132,7 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(rb_Eksekutif))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(radiob_Bisnis)
+                .addComponent(rb_bisnis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rb_Ekonomi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
@@ -325,14 +325,8 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(rb_Ekonomi.isSelected()){
             harga_txt.setText(String.valueOf(ekonomi));
-    }//GEN-LAST:event_rb_EkonomiActionPerformed
-
-    private void radiob_BisnisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiob_BisnisActionPerformed
-        // TODO add your handling code here:
-        if(radiob_Bisnis.isSelected()){
-            harga_txt.setText(String.valueOf(bisnis));
         }
-    }//GEN-LAST:event_radiob_BisnisActionPerformed
+    }//GEN-LAST:event_rb_EkonomiActionPerformed
 
     private void rb_EksekutifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_EksekutifActionPerformed
         // TODO add your handling code here:
@@ -362,6 +356,13 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         total=bayar-kembali;
         kembali_txt.setText(String.valueOf(total));
     }//GEN-LAST:event_total_txtActionPerformed
+
+    private void rb_bisnisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_bisnisActionPerformed
+        // TODO add your handling code here:
+        if(rb_bisnis.isSelected()){
+            harga_txt.setText(String.valueOf(bisnis));
+        }
+    }//GEN-LAST:event_rb_bisnisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,9 +423,9 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
     private javax.swing.JTextField namakapal_txt;
     private javax.swing.JTextField namapenum_txt;
     private javax.swing.JTextField nodeck_txt;
-    private javax.swing.JRadioButton radiob_Bisnis;
     private javax.swing.JRadioButton rb_Ekonomi;
     private javax.swing.JRadioButton rb_Eksekutif;
+    private javax.swing.JRadioButton rb_bisnis;
     private javax.swing.JTextField total_txt;
     private javax.swing.JComboBox<String> tujuan;
     // End of variables declaration//GEN-END:variables
