@@ -230,12 +230,18 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
         // TODO add your handling code here:
-        int answer=JOptionPane.showConfirmDialog(null,"Anda yakin keluar?","Keluar", JOptionPane.OK_OPTION);
-        
-        MenuPilihanTiket Menu;
-        Menu = new MenuPilihanTiket();
-        Menu.setVisible(true);
-        this.dispose();
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Konfirmasi Keluar Aplikasi",
+                "Yakin untuk keluar dari program",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            MenuPilihanTiket Menu;
+            Menu = new MenuPilihanTiket();
+            Menu.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_keluarActionPerformed
 
     /**
