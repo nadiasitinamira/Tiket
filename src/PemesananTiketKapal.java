@@ -42,6 +42,100 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
+=======
+    private void input_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_btnActionPerformed
+        // TODO add your handling code here:
+        buttonGroup1.clearSelection();
+        harga_txt.setText("");
+        tujuan.setSelectedItem("Pilih Tujuan");
+        namakapal_txt.setText("");
+        nodeck_txt.setText("");
+        namapenum_txt.setText("");
+        total_txt.setText("");
+        jlh_txt.setText("");
+        bayar_txt.setText("");
+        kembali_txt.setText("");
+    }//GEN-LAST:event_input_btnActionPerformed
+
+    private void tujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tujuanActionPerformed
+        // TODO add your handling code here:
+        if(tujuan.getSelectedItem().equals("Pilih Tujuan")){
+            buttonGroup1.clearSelection();
+            harga_txt.setText("");
+        }
+        else if(tujuan.getSelectedItem().equals("Batam")){
+            eksekutif=300000;
+            bisnis=290000;
+            ekonomi=260000;
+        }
+        else if(tujuan.getSelectedItem().equals("Jakarta")){
+            eksekutif=15000;
+            bisnis=10000;
+            ekonomi=5000;
+        }
+        else if(tujuan.getSelectedItem().equals("Lampung")){
+            eksekutif=230000;
+            bisnis=200000;
+            ekonomi=160000;
+        }
+        else if(tujuan.getSelectedItem().equals("Sabang")){
+            eksekutif=290000;
+            bisnis=270000;
+            ekonomi=250000;
+        }
+    }//GEN-LAST:event_tujuanActionPerformed
+
+    private void rb_EkonomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_EkonomiActionPerformed
+        // TODO add your handling code here:
+        if(rb_Ekonomi.isSelected()){
+            harga_txt.setText(String.valueOf(ekonomi));
+        }
+    }//GEN-LAST:event_rb_EkonomiActionPerformed
+
+    private void rb_EksekutifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_EksekutifActionPerformed
+        // TODO add your handling code here:
+        if(rb_Eksekutif.isSelected()){
+            harga_txt.setText(String.valueOf(eksekutif));
+        }
+    }//GEN-LAST:event_rb_EksekutifActionPerformed
+
+    private void namakapal_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namakapal_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namakapal_txtActionPerformed
+
+    private void keluar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluar_btnActionPerformed
+        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Konfirmasi Keluar Aplikasi",
+                "Yakin untuk keluar dari program",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            MenuPilihanTiket Menu;
+            Menu = new MenuPilihanTiket();
+            Menu.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_keluar_btnActionPerformed
+
+    private void total_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_txtActionPerformed
+        // TODO add your handling code here:
+        bayar=Integer.parseInt(bayar_txt.getText());
+        kembali=Integer.parseInt(total_txt.getText());
+        total=bayar-kembali;
+        kembali_txt.setText(String.valueOf(total));
+    }//GEN-LAST:event_total_txtActionPerformed
+
+    private void rb_bisnisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_bisnisActionPerformed
+        // TODO add your handling code here:
+        if(rb_bisnis.isSelected()){
+            harga_txt.setText(String.valueOf(bisnis));
+        }
+    }//GEN-LAST:event_rb_bisnisActionPerformed
+
+>>>>>>> 630c47e22570cdea434879648c3a62931b3caefd
     /**
      * @param args the command line arguments
      */
