@@ -15,6 +15,7 @@ public class MenuPilihanTiket extends javax.swing.JFrame {
      */
     public MenuPilihanTiket() {
         initComponents();
+        this.setLocationRelativeTo(null);//make center
     }
 
     /**
@@ -35,41 +36,51 @@ public class MenuPilihanTiket extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
+        jPanel1.setBackground(new java.awt.Color(39, 60, 117));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        btnKA.setBackground(new java.awt.Color(149, 175, 192));
         btnKA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/logo1.png"))); // NOI18N
         btnKA.setText("Pemesanan Tiket Kereta Api");
+        btnKA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnKA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKAActionPerformed(evt);
             }
         });
 
+        btnKPL.setBackground(new java.awt.Color(149, 175, 192));
         btnKPL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/logo2.png"))); // NOI18N
         btnKPL.setText("Pemesanan Tiket Kapal");
+        btnKPL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnKPL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKPLActionPerformed(evt);
             }
         });
 
+        btnPSWT.setBackground(new java.awt.Color(149, 175, 192));
         btnPSWT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/logo3.png"))); // NOI18N
         btnPSWT.setText("Pemesanan Tiket Pesawat");
+        btnPSWT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPSWT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPSWTActionPerformed(evt);
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(225, 177, 44));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Silahkan Pilih Tiket Transportasi");
 
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/keluar-01.png"))); // NOI18N
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -91,9 +102,9 @@ public class MenuPilihanTiket extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
