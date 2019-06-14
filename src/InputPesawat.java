@@ -44,6 +44,11 @@ public class InputPesawat extends javax.swing.JFrame {
                 "Kode Pesawat", "Nama Pesawat", "Kelas Pesawat", "Harga Tiket", "Jumlah Tiket", "Total Bayar", "Uang Bayar", "Uang Kembali"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(7).setResizable(false);
@@ -62,6 +67,12 @@ public class InputPesawat extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

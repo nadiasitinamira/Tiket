@@ -237,6 +237,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         
         new InputPesawat().setVisible(true);
                this.dispose();
+               
+         
     }//GEN-LAST:event_inputActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
