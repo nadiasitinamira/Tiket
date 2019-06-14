@@ -20,6 +20,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
      */
     public PemesananTiketPesawat() {
         initComponents();
+        this.setLocationRelativeTo(null);//make center
     }
 
     /**
@@ -233,6 +234,9 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         uang_kembali.setText("");
         kelas_pesawat.setSelectedIndex(0);
         kode_pesawat.setSelectedIndex(0);
+        
+        new InputPesawat().setVisible(true);
+               this.dispose();
     }//GEN-LAST:event_inputActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
