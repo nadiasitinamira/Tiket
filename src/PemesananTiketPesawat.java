@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class PemesananTiketPesawat extends javax.swing.JFrame {
 
-    
+    int harga, beli, total, bayar, kembali, jumlah;
     /**
      * Creates new form PemesananTiketPesawat
      */
@@ -31,6 +31,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,13 +46,13 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         nama_pesawat = new javax.swing.JTextField();
         kelas_pesawat = new javax.swing.JComboBox<>();
         harga_tiket = new javax.swing.JTextField();
-        jumlah_tiket = new javax.swing.JTextField();
         total_bayar = new javax.swing.JTextField();
         uang_bayar = new javax.swing.JTextField();
         hitung = new javax.swing.JButton();
         uang_kembali = new javax.swing.JTextField();
         input = new javax.swing.JButton();
         keluar = new javax.swing.JButton();
+        jumlah_tiket = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,20 +102,26 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kelas_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 210, -1));
+
+        harga_tiket.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                harga_tiketKeyReleased(evt);
+            }
+        });
         jPanel1.add(harga_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 210, -1));
 
-        jumlah_tiket.addActionListener(new java.awt.event.ActionListener() {
+        total_bayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jumlah_tiketActionPerformed(evt);
+                total_bayarActionPerformed(evt);
             }
         });
-        jumlah_tiket.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jumlah_tiketKeyPressed(evt);
-            }
-        });
-        jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 210, -1));
         jPanel1.add(total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 210, -1));
+
+        uang_bayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uang_bayarActionPerformed(evt);
+            }
+        });
         jPanel1.add(uang_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 210, -1));
 
         hitung.setText("Hitung");
@@ -141,6 +148,18 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
             }
         });
         jPanel1.add(keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, -1, -1));
+
+        jumlah_tiket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlah_tiketActionPerformed(evt);
+            }
+        });
+        jumlah_tiket.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jumlah_tiketKeyReleased(evt);
+            }
+        });
+        jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 210, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,18 +215,6 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_kelas_pesawatActionPerformed
 
-    private void jumlah_tiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_tiketActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jumlah_tiketActionPerformed
-
-    private void jumlah_tiketKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jumlah_tiketKeyPressed
-        // TODO add your handling code here:
-        int harga=Integer.parseInt(harga_tiket.getText());
-        int jumlah=Integer.parseInt(jumlah_tiket.getText());
-        int hasil=harga*jumlah;
-        total_bayar.setText(Integer.toString(hasil));
-    }//GEN-LAST:event_jumlah_tiketKeyPressed
-
     private void hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungActionPerformed
         // TODO add your handling code here:
         int total=Integer.parseInt(total_bayar.getText());
@@ -243,6 +250,44 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_keluarActionPerformed
+
+    private void uang_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uang_bayarActionPerformed
+        // TODO add your handling code here:
+        bayar=Integer.parseInt(uang_bayar.getText());
+        kembali=Integer.parseInt(total_bayar.getText());
+        total=bayar-kembali;
+        uang_kembali.setText(String.valueOf(total));
+    }//GEN-LAST:event_uang_bayarActionPerformed
+
+    private void total_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_bayarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_total_bayarActionPerformed
+
+    private void jumlah_tiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_tiketActionPerformed
+        // TODO add your handling code here:
+        beli=Integer.parseInt(jumlah_tiket.getText());
+        harga=Integer.parseInt(harga_tiket.getText());
+        total=bayar*harga;
+        total_bayar.setText(String.valueOf(total));
+    }//GEN-LAST:event_jumlah_tiketActionPerformed
+
+    private void jumlah_tiketKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jumlah_tiketKeyReleased
+        // TODO add your handling code here:
+        int a, b, c;
+        a=Integer.valueOf(harga_tiket.getText());
+        b=Integer.valueOf(jumlah_tiket.getText());
+        c=a*b;
+        total_bayar.setText(""+c);
+    }//GEN-LAST:event_jumlah_tiketKeyReleased
+
+    private void harga_tiketKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_harga_tiketKeyReleased
+        // TODO add your handling code here:
+        int a, b, c;
+        a=Integer.valueOf(harga_tiket.getText());
+        b=Integer.valueOf(total_bayar.getText());
+        c=a-b;
+        uang_kembali.setText(""+c);
+    }//GEN-LAST:event_harga_tiketKeyReleased
 
     /**
      * @param args the command line arguments
@@ -280,6 +325,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField harga_tiket;
     private javax.swing.JButton hitung;
     private javax.swing.JButton input;
