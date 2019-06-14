@@ -349,6 +349,9 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         txt_beli.setText("");
         txt_bayar.setText("");
         txt_kembali.setText("");
+        
+        new InputKeretaApi().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_inputActionPerformed
 
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
