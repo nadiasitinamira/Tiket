@@ -300,8 +300,12 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        btn_delete.setBackground(new java.awt.Color(194, 54, 22));
+        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_delete.setText("Delete");
 
+        jButton2.setBackground(new java.awt.Color(0, 151, 230));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton2.setText("Update");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
