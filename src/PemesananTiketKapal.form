@@ -43,6 +43,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -63,25 +64,23 @@
                           <EmptySpace pref="87" max="32767" attributes="0"/>
                           <Component id="btn_keluar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="nokapal_txt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="nama_txt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tujuan" alignment="0" pref="235" max="32767" attributes="0"/>
-                          <Component id="harga_txt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jumlah_txt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="totalbayar_txt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="uangbayar_txt" alignment="0" max="32767" attributes="0"/>
-                          <Component id="uangkembali_txt" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="btn_hitung" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="nodeck_txt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="nokapal_txt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="nama_txt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="tujuan" alignment="0" max="32767" attributes="0"/>
+                      <Component id="harga_txt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jumlah_txt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="totalbayar_txt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="uangbayar_txt" alignment="0" max="32767" attributes="0"/>
+                      <Component id="uangkembali_txt" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          <Component id="btn_hitung" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="nodeck_txt" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="62" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="1" pref="583" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -140,7 +139,8 @@
                       <Component id="btn_input" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_keluar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace pref="104" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="103" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -339,6 +339,31 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pemesanan Tiket Kapal"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="5" rowCount="4">
+                    <Column editable="true" title="Nomor Kapal" type="java.lang.Object"/>
+                    <Column editable="true" title="Nomor Deck" type="java.lang.Object"/>
+                    <Column editable="true" title="Nama Penumpang" type="java.lang.Object"/>
+                    <Column editable="true" title="Tujuan Pelayaran" type="java.lang.Object"/>
+                    <Column editable="true" title="Jumlah Tiket" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

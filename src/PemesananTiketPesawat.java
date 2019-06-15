@@ -57,6 +57,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         nama_pesawat = new javax.swing.JTextField();
         kode_pesawat = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -87,8 +89,6 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 60));
-
-        jPanel3.setBackground(new java.awt.Color(236, 240, 241));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Kode Pesawat");
@@ -278,15 +278,37 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 630, 540));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Kode Pesawat", "Nama Pesawat", "Kelas Pesawat", "Jumlah Tiket"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -306,31 +328,69 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private void kelas_pesawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelas_pesawatActionPerformed
         // TODO add your handling code here:
         if(kode_pesawat.getSelectedItem().equals("MPT")){
-        if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
-            harga_tiket.setText("1500000");
-        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
-            harga_tiket.setText("900000");
-        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
-            harga_tiket.setText("500000");
-        }
+            if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
+                harga_tiket.setText("1500000");
+            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
+                harga_tiket.setText("900000");
+            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
+                harga_tiket.setText("500000");
+            }
         }else if(kode_pesawat.getSelectedItem().equals("GRD")){
-        if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
-            harga_tiket.setText("1200000");
-        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
-            harga_tiket.setText("800000");
-        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
-            harga_tiket.setText("400000");
-        }
+            if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
+                harga_tiket.setText("1200000");
+            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
+                harga_tiket.setText("800000");
+            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
+                harga_tiket.setText("400000");
+            }
         }else if(kode_pesawat.getSelectedItem().equals("BTV")){
-        if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
-            harga_tiket.setText("1000000");
-        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
-            harga_tiket.setText("700000");
-        }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
-            harga_tiket.setText("300000");
+            if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
+                harga_tiket.setText("1000000");
+            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
+                harga_tiket.setText("700000");
+            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
+                harga_tiket.setText("300000");
+            }
         }
-      }
     }//GEN-LAST:event_kelas_pesawatActionPerformed
+
+    private void harga_tiketKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_harga_tiketKeyReleased
+        // TODO add your handling code here:
+        int a, b, c;
+        a=Integer.valueOf(harga_tiket.getText());
+        b=Integer.valueOf(total_bayar.getText());
+        c=a-b;
+        uang_kembali.setText(""+c);
+    }//GEN-LAST:event_harga_tiketKeyReleased
+
+    private void jumlah_tiketKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jumlah_tiketKeyReleased
+        // TODO add your handling code here:
+        int a, b, c;
+        a=Integer.valueOf(harga_tiket.getText());
+        b=Integer.valueOf(jumlah_tiket.getText());
+        c=a*b;
+        total_bayar.setText(""+c);
+    }//GEN-LAST:event_jumlah_tiketKeyReleased
+
+    private void jumlah_tiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_tiketActionPerformed
+        // TODO add your handling code here:
+        beli=Integer.parseInt(jumlah_tiket.getText());
+        harga=Integer.parseInt(harga_tiket.getText());
+        total=bayar*harga;
+        total_bayar.setText(String.valueOf(total));
+    }//GEN-LAST:event_jumlah_tiketActionPerformed
+
+    private void total_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_bayarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_total_bayarActionPerformed
+
+    private void uang_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uang_bayarActionPerformed
+        // TODO add your handling code here:
+        bayar=Integer.parseInt(uang_bayar.getText());
+        kembali=Integer.parseInt(total_bayar.getText());
+        total=bayar-kembali;
+        uang_kembali.setText(String.valueOf(total));
+    }//GEN-LAST:event_uang_bayarActionPerformed
 
     private void hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungActionPerformed
         // TODO add your handling code here:
@@ -339,6 +399,22 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         int hasil=uang-total;
         uang_kembali.setText(Integer.toString(hasil));
     }//GEN-LAST:event_hitungActionPerformed
+
+    private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
+        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Konfirmasi Keluar Aplikasi",
+            "Yakin untuk keluar dari program",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            MenuPilihanTiket Menu;
+            Menu = new MenuPilihanTiket();
+            Menu.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_keluarActionPerformed
 
     private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
         // TODO add your handling code here:
@@ -350,66 +426,13 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         uang_kembali.setText("");
         kelas_pesawat.setSelectedIndex(0);
         kode_pesawat.setSelectedIndex(0);
-        
-        new InputPesawat().setVisible(true);
-        this.dispose();
-               
-         
+
     }//GEN-LAST:event_inputActionPerformed
 
-    private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        int confirm = JOptionPane.showConfirmDialog(this,
-                "Konfirmasi Keluar Aplikasi",
-                "Yakin untuk keluar dari program",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
 
-        if (confirm == JOptionPane.YES_OPTION) {
-            MenuPilihanTiket Menu;
-            Menu = new MenuPilihanTiket();
-            Menu.setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_keluarActionPerformed
-
-    private void uang_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uang_bayarActionPerformed
-        // TODO add your handling code here:
-        bayar=Integer.parseInt(uang_bayar.getText());
-        kembali=Integer.parseInt(total_bayar.getText());
-        total=bayar-kembali;
-        uang_kembali.setText(String.valueOf(total));
-    }//GEN-LAST:event_uang_bayarActionPerformed
-
-    private void total_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_bayarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_total_bayarActionPerformed
-
-    private void jumlah_tiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_tiketActionPerformed
-        // TODO add your handling code here:
-        beli=Integer.parseInt(jumlah_tiket.getText());
-        harga=Integer.parseInt(harga_tiket.getText());
-        total=bayar*harga;
-        total_bayar.setText(String.valueOf(total));
-    }//GEN-LAST:event_jumlah_tiketActionPerformed
-
-    private void jumlah_tiketKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jumlah_tiketKeyReleased
-        // TODO add your handling code here:
-        int a, b, c;
-        a=Integer.valueOf(harga_tiket.getText());
-        b=Integer.valueOf(jumlah_tiket.getText());
-        c=a*b;
-        total_bayar.setText(""+c);
-    }//GEN-LAST:event_jumlah_tiketKeyReleased
-
-    private void harga_tiketKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_harga_tiketKeyReleased
-        // TODO add your handling code here:
-        int a, b, c;
-        a=Integer.valueOf(harga_tiket.getText());
-        b=Integer.valueOf(total_bayar.getText());
-        c=a-b;
-        uang_kembali.setText(""+c);
-    }//GEN-LAST:event_harga_tiketKeyReleased
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -463,6 +486,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jumlah_tiket;
     private javax.swing.JComboBox<String> kelas_pesawat;
     private javax.swing.JButton keluar;
