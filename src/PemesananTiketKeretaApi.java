@@ -1,6 +1,7 @@
 
 import javax.swing.JOptionPane;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,10 +17,13 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     /**
      * Creates new form PemesananTiketKeretaApi
      */
+    
     public PemesananTiketKeretaApi() {
         initComponents();
         this.setLocationRelativeTo(null);//make center
     }
+    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +62,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        inputkeretaapi = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -275,7 +279,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        inputkeretaapi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -286,7 +290,12 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 "Jurusan", "Jenis", "Nomor Kursi", "Nama Penumpang", "Jumlah Beli"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        inputkeretaapi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inputkeretaapiMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(inputkeretaapi);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -410,7 +419,9 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         txt_total.setText("");
         txt_beli.setText("");
         txt_bayar.setText("");
-        txt_kembali.setText("");
+        txt_kembali.setText(""); 
+
+        
     }//GEN-LAST:event_btn_inputActionPerformed
 
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
@@ -452,6 +463,10 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_totalActionPerformed
 
+    private void inputkeretaapiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputkeretaapiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputkeretaapiMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -491,6 +506,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private javax.swing.JButton btn_batal;
     private javax.swing.JButton btn_input;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTable inputkeretaapi;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -505,7 +521,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jurusan;
     private javax.swing.JRadioButton rb_bisnis;
     private javax.swing.JRadioButton rb_ekonomi;
