@@ -1,8 +1,9 @@
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,6 +24,53 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     public PemesananTiketPesawat() {
         initComponents();
         this.setLocationRelativeTo(null);//make center
+        load_tabel();
+        kosong();
+    }
+    private void load_tabel(){
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Kode Pesawat");
+        model.addColumn("Nama Pesawat");
+        model.addColumn("Berangkat dari");
+        model.addColumn("Tuujuan");
+        model.addColumn("Harga Tiket");
+        model.addColumn("Jumlah Tiket");
+        model.addColumn("Total Bayar");
+        model.addColumn("Uang Bayar");
+        model.addColumn("uang Kembali");
+        
+        try{
+            String sql = "SELECT * FROM tiket_pesawat";
+            java.sql.Connection conn=(Connection)config.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while(res.next()){
+                model.addRow(new Object[]{
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getInt(6),
+                    res.getInt(7),
+                    res.getInt(8),
+                    res.getInt(9)
+                });
+            }
+            tabel_pesawat.setModel(model);
+        }catch (SQLException e){}
+    }
+    
+    private void kosong(){
+        nama_pesawat.setText("");
+        harga_tiket.setText("");
+        jumlah_tiket.setText("");
+        total_bayar.setText("");
+        uang_bayar.setText("");
+        uang_kembali.setText("");
+        brngkt_txt.setText("");
+        tujuan_pesawat.setSelectedIndex(0);
+        kode_pesawat.setSelectedIndex(0);
     }
     
     
@@ -54,13 +102,15 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jumlah_tiket = new javax.swing.JTextField();
         harga_tiket = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        kelas_pesawat = new javax.swing.JComboBox<>();
+        Tujuan = new javax.swing.JLabel();
+        tujuan_pesawat = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         nama_pesawat = new javax.swing.JTextField();
         kode_pesawat = new javax.swing.JComboBox<>();
         btn_delete = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        brngkt_txt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabel_pesawat = new javax.swing.JTable();
         keluar = new javax.swing.JButton();
@@ -93,7 +143,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 630, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 630, 60));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -101,7 +151,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jLabel2.setText("Kode Pesawat");
 
         input.setBackground(new java.awt.Color(0, 151, 230));
-        input.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        input.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         input.setText("Input");
         input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,13 +217,13 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Harga Tiket");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Kelas Pesawat");
+        Tujuan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Tujuan.setText("Tujuan");
 
-        kelas_pesawat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "Kelas 1", "Kelas 2", "Kelas 3" }));
-        kelas_pesawat.addActionListener(new java.awt.event.ActionListener() {
+        tujuan_pesawat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "Aceh", "Jakarta", "Lampung", "Surabaya", "Padang", "Kalimantan", "Papua" }));
+        tujuan_pesawat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kelas_pesawatActionPerformed(evt);
+                tujuan_pesawatActionPerformed(evt);
             }
         });
 
@@ -190,12 +240,17 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         });
 
         btn_delete.setBackground(new java.awt.Color(194, 54, 22));
-        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_delete.setText("Delete");
 
         jButton2.setBackground(new java.awt.Color(0, 151, 230));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Update");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Berangkat dari");
+
+        brngkt_txt.setBackground(new java.awt.Color(241, 242, 246));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -206,40 +261,41 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel3))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Tujuan)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel9)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel7)
-                                .addComponent(jLabel8)))
-                        .addGap(154, 154, 154)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(uang_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(total_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jumlah_tiket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(harga_tiket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kelas_pesawat, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nama_pesawat, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kode_pesawat, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(hitung)
-                            .addComponent(uang_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 76, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8))
+                            .addComponent(jLabel4))
+                        .addGap(149, 149, 149)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel3))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(input)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_delete)
-                .addGap(25, 25, 25))
+                                .addComponent(input)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_delete))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(uang_bayar, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(total_bayar, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(jumlah_tiket, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(harga_tiket, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(tujuan_pesawat, 0, 210, Short.MAX_VALUE)
+                                .addComponent(nama_pesawat, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(kode_pesawat, 0, 210, Short.MAX_VALUE)
+                                .addComponent(hitung)
+                                .addComponent(uang_kembali, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(brngkt_txt)))
+                        .addGap(0, 29, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,10 +308,14 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(nama_pesawat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(brngkt_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(kelas_pesawat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Tujuan)
+                    .addComponent(tujuan_pesawat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -276,30 +336,27 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 .addComponent(hitung)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(uang_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(119, 119, 119))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_delete)
-                            .addComponent(jButton2)
-                            .addComponent(input))
-                        .addGap(25, 25, 25))))
+                    .addComponent(jLabel9)
+                    .addComponent(uang_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_delete)
+                    .addComponent(jButton2)
+                    .addComponent(input))
+                .addGap(38, 38, 38))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 630, 540));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 630, 520));
 
         tabel_pesawat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Pesawat", "Nama Pesawat", "Kelas Pesawat", "Harga Tiket", "Jumlah Tiket", "Total Bayar", "Uang Bayar", "Uang Kembali"
+                "Kode Pesawat", "Nama Pesawat", "Berangkat dari", "Tujuan", "Harga Tiket", "Jumlah Tiket", "Total Bayar", "Uang Bayar", "Uang Kembali"
             }
         ));
         tabel_pesawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,23 +381,21 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(keluar)))
-                .addContainerGap())
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(822, 822, 822)
+                                .addComponent(keluar)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(keluar)
@@ -361,34 +416,34 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_kode_pesawatActionPerformed
 
-    private void kelas_pesawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelas_pesawatActionPerformed
+    private void tujuan_pesawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tujuan_pesawatActionPerformed
         // TODO add your handling code here:
-        if(kode_pesawat.getSelectedItem().equals("MPT")){
-            if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
-                harga_tiket.setText("1500000");
-            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
-                harga_tiket.setText("900000");
-            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
-                harga_tiket.setText("500000");
-            }
-        }else if(kode_pesawat.getSelectedItem().equals("GRD")){
-            if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
-                harga_tiket.setText("1200000");
-            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
-                harga_tiket.setText("800000");
-            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
-                harga_tiket.setText("400000");
-            }
-        }else if(kode_pesawat.getSelectedItem().equals("BTV")){
-            if(kelas_pesawat.getSelectedItem().equals("Kelas 1")){
-                harga_tiket.setText("1000000");
-            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 2")){
-                harga_tiket.setText("700000");
-            }else if(kelas_pesawat.getSelectedItem().equals("Kelas 3")){
-                harga_tiket.setText("300000");
-            }
+        if(tujuan_pesawat.getSelectedItem().equals("==PILIH==")){
+            buttonGroup1.clearSelection();
+            harga_tiket.setText("");
         }
-    }//GEN-LAST:event_kelas_pesawatActionPerformed
+        else if(tujuan_pesawat.getSelectedItem().equals("Aceh")){
+            harga_tiket.setText("600000");
+        }
+        else if(tujuan_pesawat.getSelectedItem().equals("Jakarta")){
+            harga_tiket.setText("1500000");
+        }
+        else if(tujuan_pesawat.getSelectedItem().equals("Lampung")){
+            harga_tiket.setText("1300000");
+        }
+        else if(tujuan_pesawat.getSelectedItem().equals("Surabaya")){
+            harga_tiket.setText("2600000");
+        }
+        else if(tujuan_pesawat.getSelectedItem().equals("Padang")){
+            harga_tiket.setText("100000");
+        }
+        else if(tujuan_pesawat.getSelectedItem().equals("Kalimantan")){
+            harga_tiket.setText("2500000");
+        }
+        else if(tujuan_pesawat.getSelectedItem().equals("Papua")){
+            harga_tiket.setText("3000000");
+        }
+    }//GEN-LAST:event_tujuan_pesawatActionPerformed
 
     private void harga_tiketKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_harga_tiketKeyReleased
         // TODO add your handling code here:
@@ -454,14 +509,19 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
 
     private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
         // TODO add your handling code here:
-        nama_pesawat.setText("");
-        harga_tiket.setText("");
-        jumlah_tiket.setText("");
-        total_bayar.setText("");
-        uang_bayar.setText("");
-        uang_kembali.setText("");
-        kelas_pesawat.setSelectedIndex(0);
-        kode_pesawat.setSelectedIndex(0);
+          try{
+              String sql = "INSERT INTO tiket_pesawat VALUES ('"+kode_pesawat.getSelectedItem()+"','"+nama_pesawat.getText()+"','"+brngkt_txt.getText()+"','"+tujuan_pesawat.getSelectedItem()+"','"+harga_tiket.getText()+"','"+jumlah_tiket.getText()+"','"+total_bayar.getText()+"','"+uang_bayar.getText()+"','"+uang_kembali.getText()+"')";
+              java.sql.Connection conn=(Connection)config.configDB();
+              java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+              pst.execute();
+              JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
+          } catch (HeadlessException | SQLException e){
+              JOptionPane.showMessageDialog(this, e.getMessage());
+          }
+          new PemesananTiketPesawat().setVisible(true);
+          this.dispose();
+          kosong();
+          load_tabel();
     }//GEN-LAST:event_inputActionPerformed
 
     private void tabel_pesawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pesawatMouseClicked
@@ -505,6 +565,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Tujuan;
+    private javax.swing.JTextField brngkt_txt;
     private javax.swing.JButton btn_delete;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField harga_tiket;
@@ -525,12 +587,12 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jumlah_tiket;
-    private javax.swing.JComboBox<String> kelas_pesawat;
     private javax.swing.JButton keluar;
     private javax.swing.JComboBox<String> kode_pesawat;
     private javax.swing.JTextField nama_pesawat;
     private javax.swing.JTable tabel_pesawat;
     private javax.swing.JTextField total_bayar;
+    private javax.swing.JComboBox<String> tujuan_pesawat;
     private javax.swing.JTextField uang_bayar;
     private javax.swing.JTextField uang_kembali;
     // End of variables declaration//GEN-END:variables
