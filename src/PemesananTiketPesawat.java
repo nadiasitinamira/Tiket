@@ -48,7 +48,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 model.addRow(data);
             }
         } catch (SQLException ex) {
-          Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
+          Logger.getLogger(PemesananTiketPesawat.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
 
