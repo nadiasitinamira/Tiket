@@ -54,13 +54,13 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         nodeck_txt = new javax.swing.JTextField();
         btn_input = new javax.swing.JButton();
-        btn_keluar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btn_keluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -146,15 +146,6 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
             }
         });
 
-        btn_keluar.setBackground(new java.awt.Color(194, 54, 22));
-        btn_keluar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_keluar.setText("Keluar");
-        btn_keluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_keluarActionPerformed(evt);
-            }
-        });
-
         jPanel2.setBackground(new java.awt.Color(41, 128, 185));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -178,6 +169,14 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setBackground(new java.awt.Color(0, 151, 230));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Update");
+
+        jButton2.setBackground(new java.awt.Color(194, 54, 22));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setText("Delete");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -196,24 +195,27 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
                 .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(nokapal_txt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nama_txt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tujuan, javax.swing.GroupLayout.Alignment.LEADING, 0, 263, Short.MAX_VALUE)
+                        .addComponent(harga_txt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jumlah_txt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(totalbayar_txt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(uangbayar_txt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(uangkembali_txt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(77, 77, 77)
+                            .addComponent(btn_hitung))
+                        .addComponent(nodeck_txt, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_input)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                        .addComponent(btn_keluar))
-                    .addComponent(nokapal_txt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nama_txt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tujuan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(harga_txt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jumlah_txt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(totalbayar_txt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(uangbayar_txt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(uangkembali_txt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(btn_hitung))
-                    .addComponent(nodeck_txt, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(0, 62, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,61 +262,61 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_input)
-                    .addComponent(btn_keluar))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nomor Kapal", "Nomor Deck", "Nama Penumpang", "Tujuan Pelayaran", "Jumlah Tiket"
+                "Nomor Kapal", "Nomor Deck", "Nama Penumpang", "Tujuan Pelayaran", "Harga Tiket", "Jumlah Tiket", "Total Bayar", "Uang Bayar", "Uang Kembali"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(0, 151, 230));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Update");
-
-        jButton2.setBackground(new java.awt.Color(194, 54, 22));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setText("Delete");
+        btn_keluar.setBackground(new java.awt.Color(194, 54, 22));
+        btn_keluar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_keluar.setText("Keluar");
+        btn_keluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_keluarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 989, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2)
-                .addGap(38, 38, 38))
+                .addComponent(btn_keluar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(btn_keluar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

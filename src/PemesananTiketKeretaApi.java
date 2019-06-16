@@ -1,5 +1,8 @@
 
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Statement;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,8 +21,37 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
      */
     public PemesananTiketKeretaApi() {
         initComponents();
+        datatable();
         this.setLocationRelativeTo(null);//make center
     }
+    
+    public void datatable(){
+        DefaultTableModel tbl=new DefaultTableModel();
+        tbl.addColumn("Jurusan");
+        tbl.addColumn("Jenis");
+        tbl.addColumn("Nomor Kursi");
+        tbl.addColumn("Nama Penumpang");
+        tbl.addColumn("Jumlah Beli");
+        tabel_kereta_api.setModel(tbl);
+        try{
+            Statement statement=(Statement)MyConnection.getConnection().createStatement();
+            ResultSet res=statement.executeQuery("select * from tiketkeretaapi");
+            while(res.next())
+            {
+                tbl.addRow(new Object[]{
+                res.getString("Jurusan"),
+                res.getString("Jenis"),
+                res.getString("Nomor Kursi"),
+                res.getString("Nama Penumpang"),
+                res.getString("Jumlah Beli")
+            });
+            tabel_kereta_api.setModel(tbl);
+            }
+        }catch (Exception e){
+           
+        }
+    }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,8 +79,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        btn_input = new javax.swing.JButton();
-        btn_batal = new javax.swing.JButton();
         txt_kursi = new javax.swing.JTextField();
         txt_penumpang = new javax.swing.JTextField();
         txt_beli = new javax.swing.JTextField();
@@ -57,10 +87,12 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         txt_kembali = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        btn_delete = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_input = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabel_kereta_api = new javax.swing.JTable();
+        btn_batal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -186,26 +218,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jLabel10.setText("Uang Kembali");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
 
-        btn_input.setBackground(new java.awt.Color(0, 151, 230));
-        btn_input.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_input.setText("Input");
-        btn_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_inputActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
-
-        btn_batal.setBackground(new java.awt.Color(194, 54, 22));
-        btn_batal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_batal.setText("Keluar");
-        btn_batal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_batalActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, -1, -1));
-
         txt_kursi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_kursiActionPerformed(evt);
@@ -277,53 +289,88 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Jurusan", "Jenis", "Nomor Kursi", "Nama Penumpang", "Jumlah Beli"
+        btn_delete.setBackground(new java.awt.Color(194, 54, 22));
+        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
+        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 151, 230));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Update");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(194, 54, 22));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setText("Delete");
+        btn_input.setBackground(new java.awt.Color(0, 151, 230));
+        btn_input.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_input.setText("Input");
+        btn_input.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_inputMouseClicked(evt);
+            }
+        });
+        btn_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inputActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, -1, -1));
+
+        tabel_kereta_api.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Jurusan", "Jenis", "Harga", "Nomor Kursi", "Nama Penumpang", "Jumlah Beli", "Total Bayar", "Uang Bayar", "Uang Kembali"
+            }
+        ));
+        jScrollPane1.setViewportView(tabel_kereta_api);
+
+        btn_batal.setBackground(new java.awt.Color(194, 54, 22));
+        btn_batal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_batal.setText("Keluar");
+        btn_batal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_batalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(71, 71, 71)
-                .addComponent(jButton2)
-                .addGap(49, 49, 49))
+                .addContainerGap(150, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_batal)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(32, 32, 32)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(65, 65, 65)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btn_batal)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -431,6 +478,8 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         txt_beli.setText("");
         txt_bayar.setText("");
         txt_kembali.setText("");
+        
+        
     }//GEN-LAST:event_btn_inputActionPerformed
 
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
@@ -472,6 +521,33 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_totalActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btn_inputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_inputMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_inputMouseClicked
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        // TODO add your handling code here:
+        try {
+                Statement statement = (Statement) MyConnection.getConnection().createStatement();
+                statement.executeUpdate("DELETE from tiketkeretaapi where jurusan=('" + jurusan + "');");
+                JOptionPane.showMessageDialog(null, "data berhasil di HAPUS");
+                jurusan.setSelectedItem("");
+                String jenis = null;
+                txt_kursi.setText("");
+                txt_penumpang.setText("");
+                txt_beli.setText("");
+                jurusan.requestFocus();
+            } catch (Exception t) {
+                JOptionPane.showMessageDialog(null, "Data gagal di HAPUUUSS");
+            }
+            datatable();
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -509,10 +585,10 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_batal;
+    private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_input;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -527,11 +603,11 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jurusan;
     private javax.swing.JRadioButton rb_bisnis;
     private javax.swing.JRadioButton rb_ekonomi;
     private javax.swing.JRadioButton rb_eksekutif;
+    private javax.swing.JTable tabel_kereta_api;
     private javax.swing.JTextField txt_bayar;
     private javax.swing.JTextField txt_beli;
     private javax.swing.JTextField txt_harga;
