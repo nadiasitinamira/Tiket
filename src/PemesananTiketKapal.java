@@ -308,6 +308,11 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                 "Nomor Kapal", "Nomor Deck", "Nama Penumpang", "Tujuan Pelayaran", "Harga Tiket", "Jumlah Tiket", "Total Bayar", "Uang Bayar", "Uang Kembali"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         btn_keluar.setBackground(new java.awt.Color(194, 54, 22));
@@ -450,6 +455,21 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
             Logger.getLogger(PemesananTiketKapal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_inputActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int i = jTable1.getSelectedRow();
+        if(i>-1){
+            nokapal_txt.setText(model.getValueAt(i, 0).toString());
+            nodeck_txt.setText(model.getValueAt(i, 1).toString());
+            nama_txt.setText(model.getValueAt(i, 2).toString());
+            tujuan.setSelectedItem(model.getValueAt(i, 3).toString());
+            harga_txt.setText(model.getValueAt(i, 4).toString());
+            jumlah_txt.setText(model.getValueAt(i, 5).toString());
+            uangbayar_txt.setText(model.getValueAt(i, 6).toString());
+            uangkembali_txt.setText(model.getValueAt(i, 7).toString());
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
