@@ -1,7 +1,11 @@
 
 import java.awt.HeadlessException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,62 +22,35 @@ import javax.swing.table.DefaultTableModel;
 public class PemesananTiketPesawat extends javax.swing.JFrame {
 
     int harga, beli, total, bayar, kembali, jumlah;
+    DefaultTableModel model;
     /**
      * Creates new form PemesananTiketPesawat
      */
     public PemesananTiketPesawat() {
         initComponents();
         this.setLocationRelativeTo(null);//make center
-        load_tabel();
-        kosong();
+        String []judul={"Kode Pesawat","Nama Pesawat","Berangkat dari","Tujuan","Harga Tiket","Jumlah Tiket","Total Bayar","Uang Bayar","Uang Kembali"};
+        model = new DefaultTableModel(judul,0);
+        tabel_pesawat.setModel(model);
+        tampilkan();
     }
-    private void load_tabel(){
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Kode Pesawat");
-        model.addColumn("Nama Pesawat");
-        model.addColumn("Berangkat dari");
-        model.addColumn("Tuujuan");
-        model.addColumn("Harga Tiket");
-        model.addColumn("Jumlah Tiket");
-        model.addColumn("Total Bayar");
-        model.addColumn("Uang Bayar");
-        model.addColumn("uang Kembali");
+    private void tampilkan(){
         
+        int row = tabel_pesawat.getRowCount();
+        for(int a=0;a<row;a++){
+            model.removeRow(0);
+        }
         try{
-            String sql = "SELECT * FROM tiket_pesawat";
-            java.sql.Connection conn=(Connection)config.configDB();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet res = stm.executeQuery(sql);
-            while(res.next()){
-                model.addRow(new Object[]{
-                    res.getString(1),
-                    res.getString(2),
-                    res.getString(3),
-                    res.getString(4),
-                    res.getString(5),
-                    res.getInt(6),
-                    res.getInt(7),
-                    res.getInt(8),
-                    res.getInt(9)
-                });
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            ResultSet rs = cn.createStatement().executeQuery("select * from tiket_pesawat");
+            while(rs.next()){
+                String data[]={rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)};
+                model.addRow(data);
             }
-            tabel_pesawat.setModel(model);
-        }catch (SQLException e){}
-    }
-    
-    private void kosong(){
-        nama_pesawat.setText("");
-        harga_tiket.setText("");
-        jumlah_tiket.setText("");
-        total_bayar.setText("");
-        uang_bayar.setText("");
-        uang_kembali.setText("");
-        brngkt_txt.setText("");
-        tujuan_pesawat.setSelectedIndex(0);
-        kode_pesawat.setSelectedIndex(0);
-    }
-    
-    
+        } catch (SQLException ex) {
+          Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -509,19 +486,24 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
 
     private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
         // TODO add your handling code here:
-          try{
-              String sql = "INSERT INTO tiket_pesawat VALUES ('"+kode_pesawat.getSelectedItem()+"','"+nama_pesawat.getText()+"','"+brngkt_txt.getText()+"','"+tujuan_pesawat.getSelectedItem()+"','"+harga_tiket.getText()+"','"+jumlah_tiket.getText()+"','"+total_bayar.getText()+"','"+uang_bayar.getText()+"','"+uang_kembali.getText()+"')";
-              java.sql.Connection conn=(Connection)config.configDB();
-              java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-              pst.execute();
-              JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
-          } catch (HeadlessException | SQLException e){
-              JOptionPane.showMessageDialog(this, e.getMessage());
-          }
-          new PemesananTiketPesawat().setVisible(true);
-          this.dispose();
-          kosong();
-          load_tabel();
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("insert into tiket_pesawat values"+"('"+kode_pesawat.getSelectedItem()+"','"+nama_pesawat.getText()+"','"+brngkt_txt.getText()+"','"+tujuan_pesawat.getSelectedItem()+"','"+harga_tiket.getText()+"','"+jumlah_tiket.getText()+"','"+total_bayar.getText()+"','"+uang_bayar.getText()+"','"+uang_kembali.getText()+"')");
+            tampilkan();
+            
+            buttonGroup1.clearSelection();
+            kode_pesawat.setSelectedItem("==PILIH==");
+            nama_pesawat.setText("");
+            brngkt_txt.setText("");
+            tujuan_pesawat.setSelectedItem("==PILIH==");
+            harga_tiket.setText("");
+            jumlah_tiket.setText("");
+            total_bayar.setText("");
+            uang_bayar.setText("");
+            uang_kembali.setText("");
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_inputActionPerformed
 
     private void tabel_pesawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pesawatMouseClicked
