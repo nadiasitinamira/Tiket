@@ -1,5 +1,12 @@
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,6 +21,7 @@ import javax.swing.JOptionPane;
 public class PemesananTiketKapal extends javax.swing.JFrame {
     
     int batam, jakarta, lampung, sabang, beli, harga, total, bayar, kembali;
+    DefaultTableModel model;
 
     /**
      * Creates new form PemesananTiketKapal
@@ -21,7 +29,29 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
     public PemesananTiketKapal() {
         initComponents();
         this.setLocationRelativeTo(null);//make center
+        String []judul={"Nomor Kapal","Nomor Deck","Nama Penumpang","Tujuan Pelayaran","Harga Tiket","Jumlah Tiket","Total Bayar","Uang Bayar","Uang Kembali"};
+        model = new DefaultTableModel(judul,0);
+        jTable1.setModel(model);
+        tampilkan();
     }
+    
+    private void tampilkan(){
+        
+        int row = jTable1.getRowCount();
+        for(int a=0;a<row;a++){
+            model.removeRow(0);
+        }
+        try{
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+        ResultSet rs = cn.createStatement().executeQuery("select * from tiket_kapal");
+        while(rs.next()){
+            String data[]={rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)};
+            model.addRow(data);
+        }
+      } catch (SQLException ex) {
+          Logger.getLogger(PemesananTiketKapal.class.getName()).log(Level.SEVERE, null, ex);
+    }
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -402,18 +432,23 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
 
     private void btn_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inputActionPerformed
         // TODO add your handling code here:
-        nokapal_txt.setText("");
-        nodeck_txt.setText("");
-        nama_txt.setText("");
-        tujuan.setSelectedIndex(0);
-        harga_txt.setText("");
-        jumlah_txt.setText("");
-        totalbayar_txt.setText("");
-        uangbayar_txt.setText("");
-        uangkembali_txt.setText("");
-        
-//        new InputKapal().setVisible(true);
-//        this.dispose();
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("insert into tiket_kapal values"+"('"+nokapal_txt.getText()+"','"+nodeck_txt.getText()+"','"+nama_txt.getText()+"','"+tujuan.getSelectedItem()+"','"+harga_txt.getText()+"','"+jumlah_txt.getText()+"','"+totalbayar_txt.getText()+"','"+harga_txt.getText()+"','"+uangkembali_txt.getText()+"')");
+            tampilkan();
+            
+            buttonGroup1.clearSelection();
+            nokapal_txt.setText("");
+            nodeck_txt.setText("");
+            nama_txt.setText("");
+            tujuan.setSelectedItem("~Pilih Tujuan~");
+            harga_txt.setText("");
+            jumlah_txt.setText("");
+            uangbayar_txt.setText("");
+            uangkembali_txt.setText("");
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketKapal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_inputActionPerformed
 
     /**
