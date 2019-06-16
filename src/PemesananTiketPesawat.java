@@ -42,7 +42,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         }
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            ResultSet rs = cn.createStatement().executeQuery("select * from tiket_pesawat");
+            ResultSet rs = cn.createStatement().executeQuery("select * from tiketpesawat");
             while(rs.next()){
                 String data[]={rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)};
                 model.addRow(data);
@@ -333,7 +333,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Pesawat", "Nama Pesawat", "Berangkat dari", "Tujuan", "Harga Tiket", "Jumlah Tiket", "Total Bayar", "Uang Bayar", "Uang Kembali"
+                "", "", "", "", "", "", "", "", ""
             }
         ));
         tabel_pesawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -488,7 +488,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            cn.createStatement().executeUpdate("insert into tiket_pesawat values"+"('"+kode_pesawat.getSelectedItem()+"','"+nama_pesawat.getText()+"','"+brngkt_txt.getText()+"','"+tujuan_pesawat.getSelectedItem()+"','"+harga_tiket.getText()+"','"+jumlah_tiket.getText()+"','"+total_bayar.getText()+"','"+uang_bayar.getText()+"','"+uang_kembali.getText()+"')");
+            cn.createStatement().executeUpdate("insert into tiketpesawat values"+"('"+kode_pesawat.getSelectedItem()+"','"+nama_pesawat.getText()+"','"+brngkt_txt.getText()+"','"+tujuan_pesawat.getSelectedItem()+"','"+harga_tiket.getText()+"','"+jumlah_tiket.getText()+"','"+total_bayar.getText()+"','"+uang_bayar.getText()+"','"+uang_kembali.getText()+"')");
             tampilkan();
             
             buttonGroup1.clearSelection();

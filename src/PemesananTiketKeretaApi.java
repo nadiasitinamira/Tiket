@@ -87,7 +87,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         txt_kembali = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btn_batal = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -298,10 +298,15 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
 
-        jButton1.setBackground(new java.awt.Color(0, 151, 230));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Update");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
+        btn_update.setBackground(new java.awt.Color(0, 151, 230));
+        btn_update.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(194, 54, 22));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -328,6 +333,11 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "null", "null", "Title 7", "null", "Title 9"
             }
         ));
+        tabel_kereta_api.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabel_kereta_apiMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabel_kereta_api);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -517,6 +527,25 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_totalActionPerformed
 
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        try {
+            // TODO add your handling code here:
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("update tiketkeretaapi set jenis='"+rb_eksekutif.getText()+"',harga='"+txt_harga.getText()+"',nomor_kursi='"+txt_kursi.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"' where id='"+jurusan.getSelectedItem()+"'");
+            tampilkan();
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void tabel_kereta_apiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_kereta_apiMouseClicked
+        // TODO add your handling code here:
+//        int i = tabel_kereta_api.getSelectedRow();
+//        if(i>-1){
+//            jurusan.setSelectedItem(model.getValue(i, 0).toString());
+//        }
+    }//GEN-LAST:event_tabel_kereta_apiMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -555,8 +584,8 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_batal;
     private javax.swing.JButton btn_input;
+    private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
