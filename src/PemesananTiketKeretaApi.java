@@ -531,7 +531,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            cn.createStatement().executeUpdate("update tiketkeretaapi set jenis='"+rb_eksekutif.getText()+"',harga='"+txt_harga.getText()+"',nomor_kursi='"+txt_kursi.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"' where jurusan='"+jurusan.getSelectedItem()+"'");
+            cn.createStatement().executeUpdate("update tiketkeretaapi set jenis='"+rb_eksekutif.getText()+"',harga='"+txt_harga.getText()+"',nomor_kursi='"+txt_kursi.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"',where jurusan='"+jurusan.getSelectedItem()+"'");
             tampilkan();
         } catch (SQLException ex) {
             Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
@@ -545,12 +545,12 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             jurusan.setSelectedItem(model.getValueAt(i, 0).toString());
             rb_eksekutif.setText(model.getValueAt(i, 1).toString());
             txt_harga.setText(model.getValueAt(i, 2).toString());
-            txt_kursi.setText(model.getValueAt(i, 4).toString());
-            txt_penumpang.setText(model.getValueAt(i, 5).toString());
-            txt_beli.setText(model.getValueAt(i, 6).toString());
-            txt_total.setText(model.getValueAt(i, 7).toString());
-            txt_bayar.setText(model.getValueAt(i, 8).toString());
-            txt_kembali.setText(model.getValueAt(i, 9).toString());
+            txt_kursi.setText(model.getValueAt(i, 3).toString());
+            txt_penumpang.setText(model.getValueAt(i, 4).toString());
+            txt_beli.setText(model.getValueAt(i, 5).toString());
+            txt_total.setText(model.getValueAt(i, 6).toString());
+            txt_bayar.setText(model.getValueAt(i, 7).toString());
+            txt_kembali.setText(model.getValueAt(i, 8).toString());
         }
     }//GEN-LAST:event_tabel_kereta_apiMouseClicked
 
