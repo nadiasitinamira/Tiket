@@ -48,7 +48,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btn_input = new javax.swing.JButton();
-        btn_batal = new javax.swing.JButton();
         txt_kursi = new javax.swing.JTextField();
         txt_penumpang = new javax.swing.JTextField();
         txt_beli = new javax.swing.JTextField();
@@ -57,10 +56,11 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         txt_kembali = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btn_batal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -194,17 +194,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 btn_inputActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
-
-        btn_batal.setBackground(new java.awt.Color(194, 54, 22));
-        btn_batal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_batal.setText("Keluar");
-        btn_batal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_batalActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, -1, -1));
+        jPanel1.add(btn_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
 
         txt_kursi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,6 +267,16 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 60));
 
+        jButton1.setBackground(new java.awt.Color(0, 151, 230));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Update");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(194, 54, 22));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setText("Delete");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, -1, -1));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -290,9 +290,14 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Update");
-
-        jButton2.setText("Delete");
+        btn_batal.setBackground(new java.awt.Color(194, 54, 22));
+        btn_batal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_batal.setText("Keluar");
+        btn_batal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_batalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -303,10 +308,8 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(71, 71, 71)
-                .addComponent(jButton2)
-                .addGap(49, 49, 49))
+                .addComponent(btn_batal)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,10 +318,8 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGap(26, 26, 26)
+                .addComponent(btn_batal)
                 .addContainerGap())
         );
 
