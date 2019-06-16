@@ -1,5 +1,12 @@
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,13 +20,37 @@ import javax.swing.JOptionPane;
  */
 public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     int eksekutif, bisnis, ekonomi, harga, beli, total, bayar, kembali;
+    DefaultTableModel model;
     /**
      * Creates new form PemesananTiketKeretaApi
      */
     public PemesananTiketKeretaApi() {
         initComponents();
         this.setLocationRelativeTo(null);//make center
+        String []judul={"Jurusan","Jenis","Harga","Nomor Kursi","Nama Penumpang","Jumlah Beli","Total Bayar","Uang Bayar","Uang Kembali"};
+        model = new DefaultTableModel(judul,0);
+        tabel_kereta_api.setModel(model);
+        tampilkan();
+        
     }
+    
+    private void tampilkan(){
+        
+        int row = tabel_kereta_api.getRowCount();
+        for(int a=0;a<row;a++){
+            model.removeRow(0);
+        }
+        try{
+        Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+        ResultSet rs = cn.createStatement().executeQuery("select * from tiketkeretaapi");
+        while(rs.next()){
+            String data[]={rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)};
+            model.addRow(data);
+        }
+      } catch (SQLException ex) {
+          Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
+    }
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,9 +89,9 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         btn_batal = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabel_kereta_api = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -277,19 +308,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jButton2.setText("Delete");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Jurusan", "Jenis", "Nomor Kursi", "Nama Penumpang", "Jumlah Beli"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         btn_batal.setBackground(new java.awt.Color(194, 54, 22));
         btn_batal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_batal.setText("Keluar");
@@ -299,26 +317,45 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             }
         });
 
+        tabel_kereta_api.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "null", "null", "Title 7", "null", "Title 9"
+            }
+        ));
+        jScrollPane2.setViewportView(tabel_kereta_api);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_batal)
                 .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(73, 73, 73)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_batal)
                 .addContainerGap())
         );
@@ -418,16 +455,27 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_bayarKeyReleased
 
     private void btn_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inputActionPerformed
-        // TODO add your handling code here:
-        buttonGroup1.clearSelection();
-        txt_harga.setText("");
-        jurusan.setSelectedItem("Pilih Jurusan");
-        txt_kursi.setText("");
-        txt_penumpang.setText("");
-        txt_total.setText("");
-        txt_beli.setText("");
-        txt_bayar.setText("");
-        txt_kembali.setText("");
+        try {
+            // TODO add your handling code here:
+            
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("insert into tiketkeretaapi values"+"('"+jurusan.getSelectedItem()+"','"+rb_eksekutif.getText()+"','"+txt_harga.getText()+"','"+txt_kursi.getText()+"','"+txt_penumpang.getText()+"','"+txt_beli.getText()+"','"+txt_total.getText()+"','"+txt_bayar.getText()+"','"+txt_kembali.getText()+"')");
+            tampilkan();
+            
+            buttonGroup1.clearSelection();
+            txt_harga.setText("");
+            jurusan.setSelectedItem("Pilih Jurusan");
+            txt_kursi.setText("");
+            txt_penumpang.setText("");
+            txt_total.setText("");
+            txt_beli.setText("");
+            txt_bayar.setText("");
+            txt_kembali.setText("");
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }//GEN-LAST:event_btn_inputActionPerformed
 
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
@@ -523,12 +571,12 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> jurusan;
     private javax.swing.JRadioButton rb_bisnis;
     private javax.swing.JRadioButton rb_ekonomi;
     private javax.swing.JRadioButton rb_eksekutif;
+    private javax.swing.JTable tabel_kereta_api;
     private javax.swing.JTextField txt_bayar;
     private javax.swing.JTextField txt_beli;
     private javax.swing.JTextField txt_harga;
