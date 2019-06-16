@@ -51,6 +51,17 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
           Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
     }
    }
+    
+    private void reset(){
+        txt_harga.setText("");
+        jurusan.setSelectedItem("Pilih Jurusan");
+        txt_kursi.setText("");
+        txt_penumpang.setText("");
+        txt_total.setText("");
+        txt_beli.setText("");
+        txt_bayar.setText("");
+        txt_kembali.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,7 +99,8 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         btn_update = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
+        btn_reset = new javax.swing.JButton();
         btn_batal = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabel_kereta_api = new javax.swing.JTable();
@@ -225,7 +237,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 btn_inputActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, -1, -1));
+        jPanel1.add(btn_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, -1, -1));
 
         txt_kursi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,12 +318,27 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
+        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(194, 54, 22));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setText("Delete");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, -1, -1));
+        btn_delete.setBackground(new java.awt.Color(194, 54, 22));
+        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
+
+        btn_reset.setBackground(new java.awt.Color(194, 54, 22));
+        btn_reset.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_reset.setText("Reset");
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, -1, -1));
 
         btn_batal.setBackground(new java.awt.Color(194, 54, 22));
         btn_batal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -471,6 +498,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
             cn.createStatement().executeUpdate("insert into tiketkeretaapi values"+"('"+jurusan.getSelectedItem()+"','"+rb_eksekutif.getText()+"','"+txt_harga.getText()+"','"+txt_kursi.getText()+"','"+txt_penumpang.getText()+"','"+txt_beli.getText()+"','"+txt_total.getText()+"','"+txt_bayar.getText()+"','"+txt_kembali.getText()+"')");
             tampilkan();
+            reset();
             
             buttonGroup1.clearSelection();
             txt_harga.setText("");
@@ -533,6 +561,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
             cn.createStatement().executeUpdate("update tiketkeretaapi set jenis='"+rb_eksekutif.getText()+"',harga='"+txt_harga.getText()+"',nomor_kursi='"+txt_kursi.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"',where jurusan='"+jurusan.getSelectedItem()+"'");
             tampilkan();
+            reset();
         } catch (SQLException ex) {
             Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -553,6 +582,23 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             txt_kembali.setText(model.getValueAt(i, 8).toString());
         }
     }//GEN-LAST:event_tabel_kereta_apiMouseClicked
+
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_btn_resetActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        try {
+            // TODO add your handling code here:
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("delete from tiketkeretaapi where jurusan='"+jurusan.getSelectedItem()+"'");
+            tampilkan();
+            reset();
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketKeretaApi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -591,10 +637,11 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_batal;
+    private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_input;
+    private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
