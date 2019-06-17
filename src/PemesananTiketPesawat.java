@@ -251,6 +251,11 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 210, -1));
 
         btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, -1, -1));
 
         tabelpesawat.setModel(new javax.swing.table.DefaultTableModel(
@@ -437,6 +442,22 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btn_keluarActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            String sql = "UPDATE tiket_pesawat SET kode_pesawat='"+kode_pesawat.getSelectedItem()+"',nama_pesawat='"+nama_pesawat.getText()+"', berangkat_dari='"+brngkt_txt.getText()+"',tujuan_pesawat='"+tujuan_pesawat.getSelectedItem()+"',harga_tiket='"+harga_tiket.getText()+"',jumlah_tiket='"+jumlah_tiket.getText()+"',total_bayar='"+total_bayar.getText()+"',uang_bayar='"+uang_bayar.getText()+"',uang_kembali='"+uang_kembali.getText()+"' where kode_pesawat='"+kode_pesawat.getSelectedItem()+"'";
+            java.sql.Connection conn=(Connection)MyConnection.getConnection();
+            java.sql.PreparedStatement pst =conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "data berhasil di edit");
+        }catch (SQLException e){
+        JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
+        }
+        new PemesananTiketPesawat().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
      * @param args the command line arguments
