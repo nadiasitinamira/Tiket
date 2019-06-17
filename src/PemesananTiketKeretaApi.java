@@ -55,6 +55,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     
     private void reset(){
         txt_harga.setText("");
+        txt_tiket.setText("");
         jurusan.setSelectedItem("Pilih Jurusan");
         txt_kursi.setText("");
         txt_penumpang.setText("");
@@ -80,10 +81,8 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         jenis = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jurusan = new javax.swing.JComboBox<>();
-        rb_eksekutif = new javax.swing.JRadioButton();
-        rb_bisnis = new javax.swing.JRadioButton();
-        rb_ekonomi = new javax.swing.JRadioButton();
         txt_harga = new javax.swing.JTextField();
+        cb_jenis = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -132,33 +131,16 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
             }
         });
 
-        rb_eksekutif.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        rb_eksekutif.setText("Eksekutif");
-        rb_eksekutif.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_eksekutifActionPerformed(evt);
-            }
-        });
-
-        rb_bisnis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        rb_bisnis.setText("Bisnis");
-        rb_bisnis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_bisnisActionPerformed(evt);
-            }
-        });
-
-        rb_ekonomi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        rb_ekonomi.setText("Ekonomi");
-        rb_ekonomi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_ekonomiActionPerformed(evt);
-            }
-        });
-
         txt_harga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_hargaActionPerformed(evt);
+            }
+        });
+
+        cb_jenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "Eksekutif", "Bisnis", "Ekonomi" }));
+        cb_jenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_jenisActionPerformed(evt);
             }
         });
 
@@ -174,14 +156,9 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jurusan, 0, 1, Short.MAX_VALUE)
+                    .addComponent(jurusan, 0, 191, Short.MAX_VALUE)
                     .addComponent(txt_harga)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rb_ekonomi)
-                            .addComponent(rb_eksekutif)
-                            .addComponent(rb_bisnis))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(cb_jenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -194,19 +171,15 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jenis)
-                    .addComponent(rb_eksekutif))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rb_bisnis)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rb_ekonomi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(cb_jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addContainerGap())
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 310, 240));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 310, 170));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Nomor Kursi");
@@ -462,22 +435,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jurusanActionPerformed
 
-    private void rb_eksekutifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_eksekutifActionPerformed
-        // TODO add your handling code here:
-        //menampilkan harga setelah pilih jenis kelas VIP
-        if(rb_eksekutif.isSelected()){
-            txt_harga.setText(String.valueOf(eksekutif));
-        }
-    }//GEN-LAST:event_rb_eksekutifActionPerformed
-
-    private void rb_bisnisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_bisnisActionPerformed
-        // TODO add your handling code here:
-        //menampilkan harga setelah pilih jenis kelas ekonomi
-        if(rb_bisnis.isSelected()){
-            txt_harga.setText(String.valueOf(bisnis));
-        }
-    }//GEN-LAST:event_rb_bisnisActionPerformed
-
     private void txt_beliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_beliActionPerformed
         // TODO add your handling code here:
         //menginput jumlah beli tiket dan mengetahui total pembayaran
@@ -508,19 +465,27 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private void btn_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inputActionPerformed
         try {
             // TODO add your handling code here:
-            
+//            String sql = "insert into tiketkeretaapi value ('"+txt_tiket.getText()+"','"+jurusan.getSelectedItem()+"','"+jenis.getText()+"','"+txt_harga.getText()+"','"+txt_kursi.getText()+"','"+txt_penumpang.getText()+"','"+txt_beli.getText()+"','"+txt_bayar.getText()+"','"+txt_kembali.getText()+"')";
+//            java.sql.Connection cn = (Connection)MyConnection.getConnection();
+//            java.sql.PreparedStatement pst=cn.prepareStatement(sql);
+//            pst.execute();
+//            tampilkan();
+//            reset();
+
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            cn.createStatement().executeUpdate("insert into tiketkeretaapi values"+"('"+jurusan.getSelectedItem()+"','"+rb_eksekutif.getText()+"','"+txt_harga.getText()+"','"+txt_kursi.getText()+"','"+txt_penumpang.getText()+"','"+txt_beli.getText()+"','"+txt_total.getText()+"','"+txt_bayar.getText()+"','"+txt_kembali.getText()+"')");
+            cn.createStatement().executeUpdate("insert into tiketkeretaapi values"+"('"+txt_tiket.getText()+"','"+jurusan.getSelectedItem()+"','"+cb_jenis.getSelectedItem()+"','"+txt_harga.getText()+"','"+txt_kursi.getText()+"','"+txt_penumpang.getText()+"','"+txt_beli.getText()+"','"+txt_total.getText()+"','"+txt_bayar.getText()+"','"+txt_kembali.getText()+"')");
             tampilkan();
             reset();
             
             buttonGroup1.clearSelection();
-            txt_harga.setText("");
+            txt_tiket.setText("");
             jurusan.setSelectedItem("Pilih Jurusan");
+            cb_jenis.setSelectedItem("==PILIH==");
+            txt_harga.setText("");
             txt_kursi.setText("");
             txt_penumpang.setText("");
-            txt_total.setText("");
             txt_beli.setText("");
+            txt_total.setText("");
             txt_bayar.setText("");
             txt_kembali.setText("");
         } catch (SQLException ex) {
@@ -546,13 +511,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_batalActionPerformed
 
-    private void rb_ekonomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_ekonomiActionPerformed
-        // TODO add your handling code here:
-        if(rb_ekonomi.isSelected()){
-            txt_harga.setText(String.valueOf(ekonomi));
-        }
-    }//GEN-LAST:event_rb_ekonomiActionPerformed
-
     private void txt_hargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_hargaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_hargaActionPerformed
@@ -572,7 +530,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         try {
             // TODO add your handling code here:
-            String sql = "UPDATE tiketkeretaapi SET kode_tiket='"+txt_tiket.getText()+"',jurusan='"+jurusan.getSelectedItem()+"', jenis='"+rb_eksekutif.getText()+"',harga='"+txt_harga.getText()+"',nomor_kursi='"+txt_kursi.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"'where kode_tiket='"+txt_tiket.getText()+"'";
+            String sql = "UPDATE tiketkeretaapi SET kode_tiket='"+txt_tiket.getText()+"',jurusan='"+jurusan.getSelectedItem()+"', jenis='"+cb_jenis.getSelectedItem()+"',harga='"+txt_harga.getText()+"',nomor_kursi='"+txt_kursi.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"'where kode_tiket='"+txt_tiket.getText()+"'";
             java.sql.Connection conn=(Connection)MyConnection.getConnection();
             java.sql.PreparedStatement pst =conn.prepareStatement(sql);
             pst.execute();
@@ -591,7 +549,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         if(i>-1){
             txt_tiket.setText(model.getValueAt(i, 0).toString());
             jurusan.setSelectedItem(model.getValueAt(i, 1).toString());
-            rb_eksekutif.setText(model.getValueAt(i, 2).toString());
+            cb_jenis.setSelectedItem(model.getValueAt(i, 2).toString());
             txt_harga.setText(model.getValueAt(i, 3).toString());
             txt_kursi.setText(model.getValueAt(i, 4).toString());
             txt_penumpang.setText(model.getValueAt(i, 5).toString());
@@ -622,6 +580,19 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private void txt_tiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tiketActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_tiketActionPerformed
+
+    private void cb_jenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_jenisActionPerformed
+        // TODO add your handling code here:
+        if(cb_jenis.getSelectedItem().equals("Eksekutif")){
+            txt_harga.setText(String.valueOf(eksekutif));
+        }
+        else if(cb_jenis.getSelectedItem().equals("Bisnis")){
+            txt_harga.setText(String.valueOf(bisnis));
+        }
+        else if(cb_jenis.getSelectedItem().equals("Ekonomi")){
+            txt_harga.setText(String.valueOf(ekonomi));
+        }
+    }//GEN-LAST:event_cb_jenisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -665,6 +636,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cb_jenis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -681,9 +653,6 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel jenis;
     private javax.swing.JComboBox<String> jurusan;
-    private javax.swing.JRadioButton rb_bisnis;
-    private javax.swing.JRadioButton rb_ekonomi;
-    private javax.swing.JRadioButton rb_eksekutif;
     private javax.swing.JTable tabel_kereta_api;
     private javax.swing.JTextField txt_bayar;
     private javax.swing.JTextField txt_beli;

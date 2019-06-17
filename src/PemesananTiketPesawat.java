@@ -79,7 +79,6 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -105,6 +104,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         btn_keluar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         brngkt_txt = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,33 +134,30 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Pemesanan Tiket Pesawat");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
-
         jLabel2.setText("Kode Pesawat");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         jLabel3.setText("Nama Pesawat");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
         jLabel4.setText("Tujuan");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
 
         jLabel5.setText("Harga Tiket");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
 
         jLabel6.setText("Jumlah Tiket");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, -1));
 
         jLabel7.setText("Total Bayar");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
 
         jLabel8.setText("Uang Bayar");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, -1, -1));
 
         jLabel9.setText("Uang Kembali");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, -1, -1));
@@ -170,8 +168,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 kode_pesawatActionPerformed(evt);
             }
         });
-        jPanel1.add(kode_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 210, -1));
-        jPanel1.add(nama_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 210, -1));
+        jPanel1.add(kode_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 210, -1));
+        jPanel1.add(nama_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 210, -1));
 
         tujuan_pesawat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==PILIH==", "Jakarta", "Medan", "Sabang", "Lampung", "Padang", "Kalimantan" }));
         tujuan_pesawat.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +177,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 tujuan_pesawatActionPerformed(evt);
             }
         });
-        jPanel1.add(tujuan_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 210, -1));
+        jPanel1.add(tujuan_pesawat, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 210, -1));
 
         harga_tiket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,21 +189,21 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 harga_tiketKeyReleased(evt);
             }
         });
-        jPanel1.add(harga_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 210, -1));
+        jPanel1.add(harga_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 210, -1));
 
         total_bayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 total_bayarActionPerformed(evt);
             }
         });
-        jPanel1.add(total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 210, -1));
+        jPanel1.add(total_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 210, -1));
 
         uang_bayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uang_bayarActionPerformed(evt);
             }
         });
-        jPanel1.add(uang_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 210, -1));
+        jPanel1.add(uang_bayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 210, -1));
 
         hitung.setText("Hitung");
         hitung.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +211,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 hitungActionPerformed(evt);
             }
         });
-        jPanel1.add(hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, -1, -1));
+        jPanel1.add(hitung, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, -1, -1));
 
         uang_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,21 +220,25 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         });
         jPanel1.add(uang_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 210, -1));
 
+        input.setBackground(new java.awt.Color(0, 151, 230));
+        input.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         input.setText("Input");
         input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputActionPerformed(evt);
             }
         });
-        jPanel1.add(input, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, -1, -1));
+        jPanel1.add(input, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, -1, -1));
 
+        btn_delete.setBackground(new java.awt.Color(194, 54, 22));
+        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_delete.setText("Delete");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, -1, -1));
+        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, -1, -1));
 
         jumlah_tiket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,15 +250,17 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 jumlah_tiketKeyReleased(evt);
             }
         });
-        jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 210, -1));
+        jPanel1.add(jumlah_tiket, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 210, -1));
 
+        btn_update.setBackground(new java.awt.Color(0, 151, 230));
+        btn_update.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_update.setText("Update");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, -1, -1));
+        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 510, -1, -1));
 
         tabelpesawat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -271,30 +275,49 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tabelpesawat);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 540, 610, 100));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 610, 110));
 
+        btn_keluar.setBackground(new java.awt.Color(194, 54, 22));
+        btn_keluar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_keluar.setText("Keluar");
         btn_keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_keluarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 650, -1, -1));
+        jPanel1.add(btn_keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 670, -1, -1));
 
         jLabel10.setText("Berangkat dari");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
-        jPanel1.add(brngkt_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 210, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        jPanel1.add(brngkt_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 210, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+        jPanel3.setBackground(new java.awt.Color(41, 128, 185));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Pemesanan Tiket Pesawat");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel11)
+                .addContainerGap(312, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 70));
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 650, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -503,8 +526,8 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private javax.swing.JTextField harga_tiket;
     private javax.swing.JButton hitung;
     private javax.swing.JButton input;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -514,6 +537,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
