@@ -460,8 +460,9 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            cn.createStatement().executeUpdate("insert into tiket_kapal values"+"('"+nokapal_txt.getText()+"','"+nodeck_txt.getText()+"','"+nama_txt.getText()+"','"+tujuan.getSelectedItem()+"','"+harga_txt.getText()+"','"+jumlah_txt.getText()+"','"+totalbayar_txt.getText()+"','"+harga_txt.getText()+"','"+uangkembali_txt.getText()+"')");
+            cn.createStatement().executeUpdate("insert into tiket_kapal values"+"('"+nokapal_txt.getText()+"','"+nodeck_txt.getText()+"','"+nama_txt.getText()+"','"+tujuan.getSelectedItem()+"','"+harga_txt.getText()+"','"+jumlah_txt.getText()+"','"+totalbayar_txt.getText()+"','"+uangbayar_txt.getText()+"','"+uangkembali_txt.getText()+"')");
             tampilkan();
+            reset();
             
             buttonGroup1.clearSelection();
             nokapal_txt.setText("");
