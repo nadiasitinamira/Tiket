@@ -507,7 +507,17 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            String sql = "UPDATE tiket_kapal SET n_kapal='"+nokapal_txt.getText()+"',no_deck='"+nodeck_txt.getText()+"', nama_penumpang='"+nama_txt.getText()+"',tujuan_pelayar='"+tujuan.getSelectedItem()+"',harga_tiket='"+harga_txt.getText()+"',jumlah_tiket='"+jumlah_txt.getText()+"',harga_total='"+totalbayar_txt.getText()+"',uang_bayarr='"+uangbayar_txt.getText()+"',uang_bayar='"+uangbayar_txt.getText()+"',uang_kembali='"+uangkembali_txt.getText()+"'where no_kapal='"+nokapal_txt.getText()+"'";
+            java.sql.Connection conn=(Connection)MyConnection.getConnection();
+            java.sql.PreparedStatement pst =conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "data berhasil di edit");
+        }catch (SQLException e){
+        JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
+        }
+        new PemesananTiketKeretaApi().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
