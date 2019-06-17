@@ -52,6 +52,17 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
           Logger.getLogger(PemesananTiketKapal.class.getName()).log(Level.SEVERE, null, ex);
     }
    }
+    
+    private void reset(){
+        nokapal_txt.setText("");
+        nodeck_txt.setText("");
+        nama_txt.setText("");
+        tujuan.setSelectedItem("~Pilih Tujuan~");
+        harga_txt.setText("");
+        jumlah_txt.setText("");
+        uangbayar_txt.setText("");
+        uangkembali_txt.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,8 +97,8 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         btn_input = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_keluar = new javax.swing.JButton();
@@ -199,13 +210,23 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(0, 151, 230));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Update");
+        btn_update.setBackground(new java.awt.Color(0, 151, 230));
+        btn_update.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(194, 54, 22));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setText("Delete");
+        btn_delete.setBackground(new java.awt.Color(194, 54, 22));
+        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -242,9 +263,9 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_input)
                         .addGap(26, 26, 26)
-                        .addComponent(jButton1)
+                        .addComponent(btn_update)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(btn_delete)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -292,8 +313,8 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_input)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btn_update)
+                    .addComponent(btn_delete))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -471,6 +492,23 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        // TODO add your handling code here:
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("delete from tiket_kapal where no_kapal='"+nokapal_txt.getText()+"'");
+            tampilkan();
+            reset();
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketKapal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_updateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -507,13 +545,13 @@ public class PemesananTiketKapal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_hitung;
     private javax.swing.JButton btn_input;
     private javax.swing.JButton btn_keluar;
+    private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField harga_txt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
