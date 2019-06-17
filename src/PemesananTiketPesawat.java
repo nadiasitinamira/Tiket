@@ -42,7 +42,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         }
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            ResultSet rs = cn.createStatement().executeQuery("select * from tiketpesawat");
+            ResultSet rs = cn.createStatement().executeQuery("select * from tiket_pesawat");
             while(rs.next()){
                 String data[]={rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)};
                 model.addRow(data);
@@ -51,6 +51,18 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
           Logger.getLogger(PemesananTiketPesawat.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
+    
+    private void reset(){
+        kode_pesawat.setSelectedItem("==PILIH==");
+        nama_pesawat.setText("");
+        brngkt_txt.setText("");
+        tujuan_pesawat.setSelectedItem("==PILIH==");
+        harga_tiket.setText("");
+        jumlah_tiket.setText("");
+        total_bayar.setText("");
+        uang_bayar.setText("");
+        uang_kembali.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,7 +97,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         nama_pesawat = new javax.swing.JTextField();
         kode_pesawat = new javax.swing.JComboBox<>();
         btn_delete = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         brngkt_txt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -219,10 +231,20 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         btn_delete.setBackground(new java.awt.Color(194, 54, 22));
         btn_delete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 151, 230));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Update");
+        btn_update.setBackground(new java.awt.Color(0, 151, 230));
+        btn_update.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Berangkat dari");
@@ -258,7 +280,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(input)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2)
+                                .addComponent(btn_update)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_delete))
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -318,7 +340,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_delete)
-                    .addComponent(jButton2)
+                    .addComponent(btn_update)
                     .addComponent(input))
                 .addGap(38, 38, 38))
         );
@@ -488,8 +510,9 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            cn.createStatement().executeUpdate("insert into tiketpesawat values"+"('"+kode_pesawat.getSelectedItem()+"','"+nama_pesawat.getText()+"','"+brngkt_txt.getText()+"','"+tujuan_pesawat.getSelectedItem()+"','"+harga_tiket.getText()+"','"+jumlah_tiket.getText()+"','"+total_bayar.getText()+"','"+uang_bayar.getText()+"','"+uang_kembali.getText()+"')");
+            cn.createStatement().executeUpdate("insert into tiket_pesawat values"+"('"+kode_pesawat.getSelectedItem()+"','"+nama_pesawat.getText()+"','"+brngkt_txt.getText()+"','"+tujuan_pesawat.getSelectedItem()+"','"+harga_tiket.getText()+"','"+jumlah_tiket.getText()+"','"+total_bayar.getText()+"','"+uang_bayar.getText()+"','"+uang_kembali.getText()+"')");
             tampilkan();
+            reset();
             
             buttonGroup1.clearSelection();
             kode_pesawat.setSelectedItem("==PILIH==");
@@ -510,6 +533,31 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_tabel_pesawatMouseClicked
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        // TODO add your handling code here:
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("delete from tiket_pesawat where nama_pesawat='"+nama_pesawat.getText()+"'");
+            tampilkan();
+            reset();
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketPesawat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
+            cn.createStatement().executeUpdate("update tiket_pesawat set nama_pesawat='"+nama_pesawat.getText()+"',berangkat_dari='"+brngkt_txt.getText()+"',tujuan_pesawat='"+tujuan_pesawat.getSelectedItem()+"',harga_tiket='"+harga_tiket.getText()+"',jumlah_tiket='"+jumlah_tiket.getText()+"',total_bayar='"+total_bayar.getText()+"',uang_bayar='"+uang_bayar.getText()+"',uang_kembali='"+uang_kembali.getText()+"',where kode_pesawat='"+kode_pesawat.getSelectedItem()+"'");
+            tampilkan();
+            reset();
+        } catch (SQLException ex) {
+            Logger.getLogger(PemesananTiketPesawat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -550,11 +598,11 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private javax.swing.JLabel Tujuan;
     private javax.swing.JTextField brngkt_txt;
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField harga_tiket;
     private javax.swing.JButton hitung;
     private javax.swing.JButton input;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
