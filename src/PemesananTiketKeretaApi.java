@@ -559,7 +559,7 @@ public class PemesananTiketKeretaApi extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-            cn.createStatement().executeUpdate("update tiketkeretaapi set jenis='"+rb_eksekutif.getText()+"',harga='"+txt_harga.getText()+"',nomor_kursi='"+txt_kursi.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"',where jurusan='"+jurusan.getSelectedItem()+"'");
+            cn.createStatement().executeUpdate("update tiketkeretaapi set jurusan='"+jurusan.getSelectedItem()+"', jenis='"+rb_eksekutif.getText()+"',harga='"+txt_harga.getText()+"',nama_penumpang='"+txt_penumpang.getText()+"',jumlah_beli='"+txt_beli.getText()+"',total_bayar='"+txt_total.getText()+"',uang_bayar='"+txt_bayar.getText()+"',uang_kembali='"+txt_kembali.getText()+"',where nomor_kursi='"+txt_kursi.getText()+"'");
             tampilkan();
             reset();
         } catch (SQLException ex) {
