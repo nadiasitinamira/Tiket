@@ -42,7 +42,7 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         }
         try{
         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
-        ResultSet rs = cn.createStatement().executeQuery("select * from tiketkeretaapi");
+        ResultSet rs = cn.createStatement().executeQuery("select * from tiket_pesawat");
         while(rs.next()){
             String data[]={rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)};
             model.addRow(data);
@@ -273,6 +273,11 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelpesawat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelpesawatMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tabelpesawat);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 610, 110));
@@ -394,7 +399,6 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
         try {
-            // TODO add your handling code here:
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiket","root","");
             cn.createStatement().executeUpdate("delete from tiket_pesawat where kode_pesawat='"+kode_pesawat.getSelectedItem()+"'");
             tampilkan();
@@ -481,6 +485,22 @@ public class PemesananTiketPesawat extends javax.swing.JFrame {
         new PemesananTiketPesawat().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void tabelpesawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelpesawatMouseClicked
+        // TODO add your handling code here:
+        int i = tabelpesawat.getSelectedRow();
+        if(i>-1){
+            kode_pesawat.setSelectedItem(model.getValueAt(i, 0).toString());
+            nama_pesawat.setText(model.getValueAt(i, 1).toString());
+            brngkt_txt.setText(model.getValueAt(i, 2).toString());
+            tujuan_pesawat.setSelectedItem(model.getValueAt(i, 3).toString());
+            harga_tiket.setText(model.getValueAt(i, 4).toString());
+            jumlah_tiket.setText(model.getValueAt(i, 5).toString());
+            total_bayar.setText(model.getValueAt(i, 6).toString());
+            uang_bayar.setText(model.getValueAt(i, 7).toString());
+            uang_kembali.setText(model.getValueAt(i, 8).toString());
+        }
+    }//GEN-LAST:event_tabelpesawatMouseClicked
 
     /**
      * @param args the command line arguments
